@@ -1,0 +1,111 @@
+---
+title: "Data Finance Project"
+format: 
+  html:
+    css: styles.css
+    theme: dark
+    toc: true
+---
+
+## Equipe
+
+::: {.team-members}
+::: {.team-member}
+![](rickyz_foto.jpeg){width=300 height=200}
+
+
+### Henrique Reis
+
+**Função:** Desenvolvedor
+
+[Portfólio Pessoal](https://github.com/usuario1){target="_blank"}
+:::
+
+::: {.team-member}
+![](prado_foto.jpeg){width=300 height=200}
+
+### Vinícius Prado
+
+**Função:** Designer
+
+[Portfólio Pessoal](https://github.com/usuario2){target="_blank"}
+:::
+
+::: {.team-member}
+![](gustavo_foto.png){width=300 height=200}
+
+### Gustavo Farias
+
+**Função:** Gerente de Projeto
+
+[Portfólio Pessoal](https://github.com/usuario3){target="_blank"}
+:::
+:::
+
+## Sobre o Projeto
+
+Este projeto tem como objetivo identificar o preço das ações das empresas a baixo assim como , suas altas , baixas , e pontos de atenção ao comprar ou vender tais ações
+
+- F – Ford Motor Company
+- GM – General Motors Company
+- TM – Toyota Motor Corporation
+- STLA – Stellantis N.V.
+- HMC – Honda Motor Co., Ltd.
+
+## Objetivos
+
+- Identificar um padrão entre as ações
+- Semelhanças entre empresas
+- Altas e baixas 
+
+## Tecnologias Utilizadas
+
+::: {.technologies}
+::: {.technology}
+![](python-png.png){width=300 height=200}
+Python
+:::
+
+::: {.technology}
+![](github.png){width=300 height=200}
+Git Hub Pages
+:::
+
+::: {.technology}
+![](quarto-foto.png){width=300 height=200}
+Quarto
+:::
+:::
+
+## Funcionalidades
+
+### Funcionalidade 1
+Monitoramento em Tempo Real
+Acompanhe em tempo real as cotações das principais montadoras, incluindo Ford, GM, Toyota, Stellantis e Honda, com atualizações constantes do mercado.
+
+### Funcionalidade 2
+Identificação de Tendências
+Detecte padrões de alta e baixa nos preços das ações, ajudando a visualizar momentos estratégicos para compra ou venda.
+
+### Funcionalidade 3
+Análise de Curto e Longo Prazo
+Compare o desempenho das ações ao longo de diferentes períodos, com gráficos interativos e indicadores financeiros para decisões mais assertivas.
+
+## Cronograma
+
+| Fase | Descrição | Status |
+|------|-----------|--------|
+| 1 | Planejamento e Pesquisa | Concluído |
+| 2 | Design e Prototipagem | Em andamento |
+| 3 | Desenvolvimento | Pendente |
+| 4 | Testes | Pendente |
+| 5 | Lançamento | Pendente |
+
+## Contato
+
+Para mais informações sobre o projeto, entre em contato conosco pelo email: [henriquereis.mail.fae.edu](mailto:henriquereis.mail.fae.edu)
+
+::: {.footer}
+© 2025 Equipe do Projeto. Todos os direitos reservados.
+:::
+
