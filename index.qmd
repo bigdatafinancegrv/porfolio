@@ -1,5 +1,5 @@
 ---
-title: "Data Finance Projectarti"
+title: "Data Finance Project"
 format: 
   html:
     css: styles.css
@@ -18,7 +18,8 @@ format:
 
 **Função:** Desenvolvedor
 
-[Portfólio Pessoal](https://github.com/usuario1){target="_blank"}
+[Portfólio Pessoal](https://rickyz-120.github.io/portfolio/
+){target="_blank"}
 :::
 
 ::: {.team-member}
@@ -38,8 +39,19 @@ format:
 
 **Função:** Gerente de Projeto
 
-[Portfólio Pessoal](https://github.com/usuario3){target="_blank"}
+[Portfólio Pessoal](https://github.com/gusfariass/portfolio.git){target="_blank"}
 :::
+
+::: {.team-member}
+![](guilherme_foto.png){width=300 height=200}
+
+### Guilherme Oliveira
+
+**Função:** Desenvolvedor
+
+[Portfólio Pessoal](https://guiermis.github.io/guiermis_portfolio/){target="_blank"}
+:::
+
 :::
 
 ## Sobre o Projeto

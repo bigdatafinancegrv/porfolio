@@ -3,12 +3,12 @@ project:
   output-dir: "."
   
 website:
-  title: "site_grupo"
+  title: "Data Finance Project"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - analise_acoes.qmd
 
 format:
   html:

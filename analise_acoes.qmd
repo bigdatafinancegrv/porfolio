@@ -1,0 +1,180 @@
+---
+title: "Análise de Ações"
+format:
+  dashboard:
+    theme: 
+      - cosmo
+      - brand
+      - dark
+    css: styles.css
+    orientation: rows
+    scrolling: true
+    navbar: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    comment = NA,
+    fig.width = 10,
+    fig.height = 7
+)
+
+library(reticulate)
+
+# Carregar bibliotecas
+library(quantmod)
+library(tidyverse)
+library(timetk)
+library(lubridate)
+library(zoo)
+library(rugarch)
+library(patchwork)
+library(DT)
+
+# Definir tema escuro para todos os gráficos ggplot2
+tema_escuro <- theme_minimal() +
+  theme(
+    plot.background = element_rect(fill = "#121212", color = NA),
+    panel.background = element_rect(fill = "#121212", color = NA),
+    panel.grid.major = element_line(color = "#333333"),
+    panel.grid.minor = element_line(color = "#262626"),
+    text = element_text(color = "#FFFFFF"),
+    axis.text = element_text(color = "#CCCCCC"),
+    axis.title = element_text(color = "#FFFFFF"),
+    legend.background = element_rect(fill = "#121212", color = NA),
+    legend.text = element_text(color = "#FFFFFF"),
+    legend.title = element_text(color = "#FFFFFF"),
+    plot.title = element_text(color = "#FFFFFF", size = 16),
+    plot.subtitle = element_text(color = "#CCCCCC")
+  )
+
+theme_set(tema_escuro)  # Aplicar o tema escuro globalmente
+```
+
+```{r}
+# Definir os tickers
+tickers <- c("F", "GM", "HMC", "STLA", "TM")
+
+# Definir período: últimos 5 anos
+start_date <- Sys.Date() - years(5)
+end_date   <- Sys.Date()
+
+# Baixar os dados do Yahoo Finance
+getSymbols(tickers, src = "yahoo", from = start_date, to = end_date)
+
+# Selecionar o fechamento (Cl) e juntar em um único data frame
+price_list <- lapply(tickers, function(sym) Cl(get(sym)))
+portfolio_prices <- do.call(merge, price_list)
+colnames(portfolio_prices) <- tickers
+portfolio_prices <- na.omit(portfolio_prices)
+portfolio_prices <- tk_tbl(portfolio_prices, preserve.row.names = TRUE, rename_index = "date")
+portfolio_prices$date <- as.Date(portfolio_prices$date)
+```
+
+```{r}
+#| fig.height: 8
+# Criar um gráfico de linhas com cores vibrantes para fundo escuro
+portfolio_prices %>%
+  pivot_longer(cols = -date, names_to = "ticker", values_to = "price") %>%
+  ggplot(aes(x = date, y = price, color = ticker)) +
+  geom_line(linewidth = 1) +
+  scale_color_manual(values = c(
+    "F" = "#00BCD4",     # Azul ciano
+    "GM" = "#FF4081",    # Rosa
+    "HMC" = "#FFEB3B",   # Amarelo
+    "STLA" = "#4CAF50",  # Verde
+    "TM" = "#9C27B0"     # Roxo
+  )) +
+  labs(
+    title = "Preços das Ações - Últimos 5 Anos",
+    subtitle = paste("Período:", format(min(portfolio_prices$date), "%d/%m/%Y"), 
+                    "a", format(max(portfolio_prices$date), "%d/%m/%Y")),
+    x = "Data",
+    y = "Preço ($)",
+    color = "Empresa"
+  ) +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  theme(legend.position = "bottom")
+```
+
+```{r}
+# Tabela com estilo para fundo escuro
+datatable(
+  tail(portfolio_prices, 10),
+  options = list(
+    pageLength = 10,
+    dom = 'Bfrtip',
+    autoWidth = TRUE
+  ),
+  rownames = FALSE,
+  class = 'cell-border stripe',
+  caption = "Últimos 10 dias de negociação"
+) %>%
+  formatStyle(
+    columns = names(portfolio_prices),
+    backgroundColor = "#121212",
+    color = "#FFFFFF"
+  ) %>%
+  formatStyle(
+    columns = tickers,
+    valueColumns = tickers,
+    backgroundColor = styleInterval(
+      quantile(unlist(portfolio_prices[, tickers]), probs = c(0.25, 0.5, 0.75)),
+      c("#3D5AFE", "#651FFF", "#D500F9", "#FF1744")
+    ),
+    color = "#FFFFFF"
+  ) %>%
+  formatCurrency(columns = tickers, currency = "$")
+```
+
+```{r}
+#| fig.height: 8
+# Gráfico de retornos diários
+portfolio_returns <- portfolio_prices %>%
+  mutate(across(-date, ~(. / lag(.) - 1) * 100)) %>%
+  na.omit()
+
+portfolio_returns %>%
+  pivot_longer(cols = -date, names_to = "ticker", values_to = "return") %>%
+  ggplot(aes(x = date, y = return, color = ticker)) +
+  geom_line(alpha = 0.7) +
+  scale_color_manual(values = c(
+    "F" = "#00BCD4",
+    "GM" = "#FF4081",
+    "HMC" = "#FFEB3B",
+    "STLA" = "#4CAF50",
+    "TM" = "#9C27B0"
+  )) +
+  labs(
+    title = "Retornos Diários (%)",
+    x = "Data",
+    y = "Retorno (%)",
+    color = "Empresa"
+  ) +
+  theme(legend.position = "bottom")
+```
+
+```{r}
+#| fig.height: 8
+# Boxplot de retornos para comparação
+portfolio_returns %>%
+  pivot_longer(cols = -date, names_to = "ticker", values_to = "return") %>%
+  ggplot(aes(x = ticker, y = return, fill = ticker)) +
+  geom_boxplot(alpha = 0.8, outlier.color = "white", outlier.size = 1) +
+  scale_fill_manual(values = c(
+    "F" = "#00BCD4",
+    "GM" = "#FF4081",
+    "HMC" = "#FFEB3B",
+    "STLA" = "#4CAF50",
+    "TM" = "#9C27B0"
+  )) +
+  labs(
+    title = "Distribuição dos Retornos Diários",
+    x = "Empresa",
+    y = "Retorno (%)"
+  ) +
+  theme(legend.position = "none")
+```

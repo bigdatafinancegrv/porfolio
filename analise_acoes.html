@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Finance Project</title>
+<title>Análise de Ações – Data Finance Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,6 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,12 +74,33 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
 
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="quarto-dashboard nav-fixed fullcontent">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -93,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./analise_acoes.html"> 
+    <a class="nav-link active" href="./analise_acoes.html" aria-current="page"> 
 <span class="menu-text">Análise de Ações</span></a>
   </li>  
 </ul>
@@ -102,180 +131,101 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-</header>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Análise de Ações</a></div>
+        
+        
+      </div>
+    </div>
+</div>
+</nav>
+</header></header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container dashboard-scrolling">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#equipe" id="toc-equipe" class="nav-link active" data-scroll-target="#equipe">Equipe</a></li>
-  <li><a href="#sobre-o-projeto" id="toc-sobre-o-projeto" class="nav-link" data-scroll-target="#sobre-o-projeto">Sobre o Projeto</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos">Objetivos</a></li>
-  <li><a href="#tecnologias-utilizadas" id="toc-tecnologias-utilizadas" class="nav-link" data-scroll-target="#tecnologias-utilizadas">Tecnologias Utilizadas</a></li>
-  <li><a href="#funcionalidades" id="toc-funcionalidades" class="nav-link" data-scroll-target="#funcionalidades">Funcionalidades</a>
-  <ul class="collapse">
-  <li><a href="#funcionalidade-1" id="toc-funcionalidade-1" class="nav-link" data-scroll-target="#funcionalidade-1">Funcionalidade 1</a></li>
-  <li><a href="#funcionalidade-2" id="toc-funcionalidade-2" class="nav-link" data-scroll-target="#funcionalidade-2">Funcionalidade 2</a></li>
-  <li><a href="#funcionalidade-3" id="toc-funcionalidade-3" class="nav-link" data-scroll-target="#funcionalidade-3">Funcionalidade 3</a></li>
-  </ul></li>
-  <li><a href="#cronograma" id="toc-cronograma" class="nav-link" data-scroll-target="#cronograma">Cronograma</a></li>
-  <li><a href="#contato" id="toc-contato" class="nav-link" data-scroll-target="#contato">Contato</a></li>
-  </ul>
-</nav>
-    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Data Finance Project</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="equipe" class="level2">
-<h2 class="anchored" data-anchor-id="equipe">Equipe</h2>
-<div class="team-members">
-<div class="team-member">
-<p><img src="rickyz_foto.jpeg" width="300" height="200"></p>
-<section id="henrique-reis" class="level3">
-<h3 class="anchored" data-anchor-id="henrique-reis">Henrique Reis</h3>
-<p><strong>Função:</strong> Desenvolvedor</p>
-<p><a href="https://github.com/usuario1" target="_blank">Portfólio Pessoal</a></p>
-</section>
-</div>
-<div class="team-member">
-<p><img src="prado_foto.jpeg" width="300" height="200"></p>
-<section id="vinícius-prado" class="level3">
-<h3 class="anchored" data-anchor-id="vinícius-prado">Vinícius Prado</h3>
-<p><strong>Função:</strong> Designer</p>
-<p><a href="https://github.com/usuario2" target="_blank">Portfólio Pessoal</a></p>
-</section>
-</div>
-<div class="team-member">
-<p><img src="gustavo_foto.png" width="300" height="200"></p>
-<section id="gustavo-farias" class="level3">
-<h3 class="anchored" data-anchor-id="gustavo-farias">Gustavo Farias</h3>
-<p><strong>Função:</strong> Gerente de Projeto</p>
-<p><a href="https://github.com/usuario3" target="_blank">Portfólio Pessoal</a></p>
-</section>
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="flow" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-stdout html-fill-item html-fill-container">
+<pre><code>[1] "F"    "GM"   "HMC"  "STLA" "TM"  </code></pre>
 </div>
 </div>
-</section>
-<section id="sobre-o-projeto" class="level2">
-<h2 class="anchored" data-anchor-id="sobre-o-projeto">Sobre o Projeto</h2>
-<p>Este projeto tem como objetivo identificar o preço das ações das empresas a baixo assim como , suas altas , baixas , e pontos de atenção ao comprar ou vender tais ações</p>
-<ul>
-<li>F – Ford Motor Company</li>
-<li>GM – General Motors Company</li>
-<li>TM – Toyota Motor Corporation</li>
-<li>STLA – Stellantis N.V.</li>
-<li>HMC – Honda Motor Co., Ltd.</li>
-</ul>
-</section>
-<section id="objetivos" class="level2">
-<h2 class="anchored" data-anchor-id="objetivos">Objetivos</h2>
-<ul>
-<li>Identificar um padrão entre as ações</li>
-<li>Semelhanças entre empresas</li>
-<li>Altas e baixas</li>
-</ul>
-</section>
-<section id="tecnologias-utilizadas" class="level2">
-<h2 class="anchored" data-anchor-id="tecnologias-utilizadas">Tecnologias Utilizadas</h2>
-<div class="technologies">
-<div class="technology">
-<p><img src="python-png.png" width="300" height="200"> Python</p>
-</div>
-<div class="technology">
-<p><img src="github.png" width="300" height="200"> Git Hub Pages</p>
-</div>
-<div class="technology">
-<p><img src="quarto-foto.png" width="300" height="200"> Quarto</p>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="analise_acoes_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
 </div>
-</section>
-<section id="funcionalidades" class="level2">
-<h2 class="anchored" data-anchor-id="funcionalidades">Funcionalidades</h2>
-<section id="funcionalidade-1" class="level3">
-<h3 class="anchored" data-anchor-id="funcionalidade-1">Funcionalidade 1</h3>
-<p>Monitoramento em Tempo Real Acompanhe em tempo real as cotações das principais montadoras, incluindo Ford, GM, Toyota, Stellantis e Honda, com atualizações constantes do mercado.</p>
-</section>
-<section id="funcionalidade-2" class="level3">
-<h3 class="anchored" data-anchor-id="funcionalidade-2">Funcionalidade 2</h3>
-<p>Identificação de Tendências Detecte padrões de alta e baixa nos preços das ações, ajudando a visualizar momentos estratégicos para compra ou venda.</p>
-</section>
-<section id="funcionalidade-3" class="level3">
-<h3 class="anchored" data-anchor-id="funcionalidade-3">Funcionalidade 3</h3>
-<p>Análise de Curto e Longo Prazo Compare o desempenho das ações ao longo de diferentes períodos, com gráficos interativos e indicadores financeiros para decisões mais assertivas.</p>
-</section>
-</section>
-<section id="cronograma" class="level2">
-<h2 class="anchored" data-anchor-id="cronograma">Cronograma</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Fase</th>
-<th>Descrição</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Planejamento e Pesquisa</td>
-<td>Concluído</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Design e Prototipagem</td>
-<td>Em andamento</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Desenvolvimento</td>
-<td>Pendente</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Testes</td>
-<td>Pendente</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>Lançamento</td>
-<td>Pendente</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="contato" class="level2">
-<h2 class="anchored" data-anchor-id="contato">Contato</h2>
-<p>Para mais informações sobre o projeto, entre em contato conosco pelo email: <a href="mailto:henriquereis.mail.fae.edu">henriquereis.mail.fae.edu</a></p>
-<div class="footer">
-<p>© 2025 Equipe do Projeto. Todos os direitos reservados.</p>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-c9721e6edc2a2c1af75d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c9721e6edc2a2c1af75d">{"x":{"filter":"none","vertical":false,"caption":"<caption>Últimos 10 dias de negociação<\/caption>","data":[["2025-03-11","2025-03-12","2025-03-13","2025-03-14","2025-03-17","2025-03-18","2025-03-19","2025-03-20","2025-03-21","2025-03-24"],[9.689999580383301,9.590000152587891,9.529999732971191,9.729999542236328,9.920000076293945,9.949999809265137,10.17000007629395,10.01000022888184,10,10.25],[48.27999877929688,47.90000152587891,47.11000061035156,48.34000015258789,49,48.66999816894531,49.79000091552734,49.43999862670898,49.79999923706055,51.45999908447266],[28.94000053405762,29.01000022888184,28.82999992370605,29.42000007629395,29.97999954223633,30.40999984741211,30.29999923706055,30.14999961853027,30.03000068664551,30.04999923706055],[12.47999954223633,12.31999969482422,11.82999992370605,12.38000011444092,12.56999969482422,12.63000011444092,12.67000007629395,12.17000007629395,12.06999969482422,12.27999973297119],[184.5299987792969,185.6499938964844,182.9700012207031,186.6699981689453,188.4100036621094,190.1999969482422,193.1399993896484,192.1699981689453,190.6999969482422,192.4700012207031]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>date<\/th>\n      <th>F<\/th>\n      <th>GM<\/th>\n      <th>HMC<\/th>\n      <th>STLA<\/th>\n      <th>TM<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"Bfrtip","language":{"info":"Showing _TOTAL_ entries"},"pageLength":10,"autoWidth":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"className":"dt-right","targets":[1,2,3,4,5]},{"name":"date","targets":0},{"name":"F","targets":1},{"name":"GM","targets":2},{"name":"HMC","targets":3},{"name":"STLA","targets":4},{"name":"TM","targets":5}],"order":[],"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2075 ? \"#3D5AFE\" : value <= 28.12 ? \"#651FFF\" : value <= 50.265 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2075 ? \"#3D5AFE\" : value <= 28.12 ? \"#651FFF\" : value <= 50.265 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2075 ? \"#3D5AFE\" : value <= 28.12 ? \"#651FFF\" : value <= 50.265 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2075 ? \"#3D5AFE\" : value <= 28.12 ? \"#651FFF\" : value <= 50.265 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2075 ? \"#3D5AFE\" : value <= 28.12 ? \"#651FFF\" : value <= 50.265 ? \"#D500F9\" : \"#FF1744\"});\n}"}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.rowCallback"],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="analise_acoes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="analise_acoes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -695,6 +645,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
 
 
 
