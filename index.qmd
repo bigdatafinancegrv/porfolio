@@ -18,18 +18,17 @@ format:
 
 **Função:** Desenvolvedor
 
-[Portfólio Pessoal](https://rickyz-120.github.io/portfolio/
-){target="_blank"}
+[Portfólio Pessoal](https://rickyz-120.github.io/portfolio/){target="_blank"}
 :::
 
 ::: {.team-member}
-![](prado_foto.jpeg){width=300 height=200}
+![](prado_foto.jpg){width=300 height=200}
 
 ### Vinícius Prado
 
 **Função:** Designer
 
-[Portfólio Pessoal](https://github.com/usuario2){target="_blank"}
+[Portfólio Pessoal](https://vinicsprado.github.io/portfolio/){target="_blank"}
 :::
 
 ::: {.team-member}
@@ -115,7 +114,7 @@ Compare o desempenho das ações ao longo de diferentes períodos, com gráficos
 
 ## Contato
 
-Para mais informações sobre o projeto, entre em contato conosco pelo email: [henriquereis.mail.fae.edu](mailto:henriquereis.mail.fae.edu)
+Para mais informações sobre o projeto, entre em contato conosco pelo email: [bigdatafinance.grv@gmail.com](mailto:bigdatafinance.grv@gmail.com)
 
 ::: {.footer}
 © 2025 Equipe do Projeto. Todos os direitos reservados.

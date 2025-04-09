@@ -1,0 +1,127 @@
+---
+title: "Análise de Ações"
+format:
+  dashboard:
+    theme: 
+      - cosmo
+      - brand
+      - dark
+    css: styles.css
+    orientation: rows
+    scrolling: true
+    navbar: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    comment = NA,
+    fig.width = 10,
+    fig.height = 7
+)
+
+library(reticulate)
+
+# Carregar bibliotecas
+library(quantmod)
+library(tidyverse)
+library(timetk)
+library(lubridate)
+library(zoo)
+library(rugarch)
+library(patchwork)
+library(DT)
+library(plotly)
+library(corrplot)
+library(PerformanceAnalytics)
+
+# Definir tema escuro para todos os gráficos ggplot2
+tema_escuro <- theme_minimal() +
+  theme(
+    plot.background = element_rect(fill = "#121212", color = NA),
+    panel.background = element_rect(fill = "#121212", color = NA),
+    panel.grid.major = element_line(color = "#333333"),
+    panel.grid.minor = element_line(color = "#262626"),
+    text = element_text(color = "#FFFFFF"),
+    axis.text = element_text(color = "#CCCCCC"),
+    axis.title = element_text(color = "#FFFFFF"),
+    legend.background = element_rect(fill = "#121212", color = NA),
+    legend.text = element_text(color = "#FFFFFF"),
+    legend.title = element_text(color = "#FFFFFF"),
+    plot.title = element_text(color = "#FFFFFF", size = 16),
+    plot.subtitle = element_text(color = "#CCCCCC")
+  )
+
+theme_set(tema_escuro)  # Aplicar o tema escuro globalmente
+
+# Definir cores para os gráficos plotly (compatíveis com tema escuro)
+plotly_colors <- c("#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd")
+```
+
+
+```{r}
+# Definir os tickers
+tickers <- c("F", "GM", "HMC", "STLA", "TM")
+ticker_names <- c("Ford", "General Motors", "Honda", "Stellantis", "Toyota")
+
+# Definir período: últimos 5 anos
+start_date <- Sys.Date() - years(5)
+end_date   <- Sys.Date()
+
+# Baixar os dados do Yahoo Finance
+getSymbols(tickers, src = "yahoo", from = start_date, to = end_date)
+
+# Selecionar o fechamento (Cl) e juntar em um único data frame
+price_list <- lapply(tickers, function(sym) Cl(get(sym)))
+portfolio_prices <- do.call(merge, price_list)
+colnames(portfolio_prices) <- tickers
+portfolio_prices <- na.omit(portfolio_prices)
+portfolio_prices <- tk_tbl(portfolio_prices, preserve.row.names = TRUE, rename_index = "date")
+portfolio_prices$date <- as.Date(portfolio_prices$date)
+```
+
+```{r}
+# Calcular retornos diários
+returns_xts <- ROC(as.xts(portfolio_prices[,-1], order.by=portfolio_prices$date))
+returns_xts <- returns_xts[-1,] # Remover primeira linha (NA)
+returns_df <- data.frame(date = index(returns_xts), coredata(returns_xts))
+
+# Preparar dados para plotly
+prices_long <- portfolio_prices %>%
+  pivot_longer(cols = all_of(tickers), names_to = "Stock", values_to = "Price")
+
+# Normalizar preços (base 100)
+normalized_prices <- portfolio_prices %>%
+  mutate(across(all_of(tickers), ~./first(.)*100)) %>%
+  pivot_longer(cols = all_of(tickers), names_to = "Stock", values_to = "NormalizedPrice")
+
+# Obter dados de volume
+volume_list <- lapply(tickers, function(sym) Vo(get(sym)))
+volume_data <- do.call(merge, volume_list)
+colnames(volume_data) <- tickers
+volume_df <- data.frame(date = index(volume_data), coredata(volume_data))
+volume_long <- volume_df %>%
+  pivot_longer(cols = all_of(tickers), names_to = "Stock", values_to = "Volume")
+
+# Preparar dados de retorno para visualização
+returns_long <- returns_df %>%
+  pivot_longer(cols = all_of(tickers), names_to = "Stock", values_to = "Return")
+
+# Calcular métricas anualizadas
+annual_returns <- colMeans(returns_xts, na.rm = TRUE) * 252 * 100
+annual_risk <- apply(returns_xts, 2, sd, na.rm = TRUE) * sqrt(252) * 100
+sharpe_ratio <- annual_returns / annual_risk
+
+risk_return_df <- data.frame(
+  Stock = tickers,
+  StockName = ticker_names,
+  Return = round(annual_returns, 2),
+  Risk = round(annual_risk, 2),
+  Sharpe = round(sharpe_ratio, 2)
+)
+
+# Calcular matriz de correlação
+cor_matrix <- cor(returns_xts)
+```
