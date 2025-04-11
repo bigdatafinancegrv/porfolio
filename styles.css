@@ -385,3 +385,7 @@ div.figure {
 .html-fill-container {
   background-color: var(--bg-color) !important;
 }
+
+p {
+  color: white !important;
+}

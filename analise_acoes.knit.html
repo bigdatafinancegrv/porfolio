@@ -74,26 +74,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-
-<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-
-<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
-
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-
-<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-
-<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
-
-<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
-
-<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-
-<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
-
 
 
 <link rel="stylesheet" href="styles.css">
@@ -122,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./analise_acoes.html" aria-current="page"> 
+    <a class="nav-link" href="./analise_acoes.html"> 
 <span class="menu-text">Análise de Ações</span></a>
   </li>  
 </ul>
@@ -156,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
 <!-- main -->
 
-<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="flow" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, max-content) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, max-content) minmax(3em, 1fr) minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="flow" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, max-content) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output cell-output-stdout html-fill-item html-fill-container">
@@ -196,8 +176,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-9b6b4fa3f36e62c3f388" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-9b6b4fa3f36e62c3f388">{"x":{"filter":"none","vertical":false,"caption":"<caption>Últimos 10 dias de negociação<\/caption>","data":[["2025-03-28","2025-03-31","2025-04-01","2025-04-02","2025-04-03","2025-04-04","2025-04-07","2025-04-08","2025-04-09","2025-04-10"],[9.720000267028809,10.02999973297119,9.939999580383301,10.14999961853027,9.539999961853027,9.579999923706055,9.239999771118164,8.689999580383301,9.5,9.140000343322754],[46.68000030517578,47.02999877929688,47.2599983215332,47.97999954223633,45.90000152587891,44.18000030517578,43.52999877929688,42.47999954223633,45.7400016784668,43.72999954223633],[27.26000022888184,27.1299991607666,26.79999923706055,27.30999946594238,26.34000015258789,25,25.34000015258789,25.21999931335449,27.6200008392334,26.61000061035156],[11.32999992370605,11.21000003814697,11.09000015258789,11.27000045776367,10.21000003814697,9.720000267028809,9.260000228881836,8.529999732971191,10.11999988555908,8.909999847412109],[179.0700073242188,176.5299987792969,174.4199981689453,177.3099975585938,168.0700073242188,158.6300048828125,160.3399963378906,159.3200073242188,174.1399993896484,167.2200012207031]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>date<\/th>\n      <th>F<\/th>\n      <th>GM<\/th>\n      <th>HMC<\/th>\n      <th>STLA<\/th>\n      <th>TM<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"Bfrtip","language":{"info":"Showing _TOTAL_ entries"},"pageLength":10,"autoWidth":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"className":"dt-right","targets":[1,2,3,4,5]},{"name":"date","targets":0},{"name":"F","targets":1},{"name":"GM","targets":2},{"name":"HMC","targets":3},{"name":"STLA","targets":4},{"name":"TM","targets":5}],"order":[],"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\n}"}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.rowCallback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-1cc872413595d44785ef" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1cc872413595d44785ef">{"x":{"filter":"none","vertical":false,"caption":"<caption>Últimos 10 dias de negociação<\/caption>","data":[["2025-03-28","2025-03-31","2025-04-01","2025-04-02","2025-04-03","2025-04-04","2025-04-07","2025-04-08","2025-04-09","2025-04-10"],[9.720000267028809,10.02999973297119,9.939999580383301,10.14999961853027,9.539999961853027,9.579999923706055,9.239999771118164,8.689999580383301,9.5,9.140000343322754],[46.68000030517578,47.02999877929688,47.2599983215332,47.97999954223633,45.90000152587891,44.18000030517578,43.52999877929688,42.47999954223633,45.7400016784668,43.72999954223633],[27.26000022888184,27.1299991607666,26.79999923706055,27.30999946594238,26.34000015258789,25,25.34000015258789,25.21999931335449,27.6200008392334,26.61000061035156],[11.32999992370605,11.21000003814697,11.09000015258789,11.27000045776367,10.21000003814697,9.720000267028809,9.260000228881836,8.529999732971191,10.11999988555908,8.909999847412109],[179.0700073242188,176.5299987792969,174.4199981689453,177.3099975585938,168.0700073242188,158.6300048828125,160.3399963378906,159.3200073242188,174.1399993896484,167.2200012207031]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>date<\/th>\n      <th>F<\/th>\n      <th>GM<\/th>\n      <th>HMC<\/th>\n      <th>STLA<\/th>\n      <th>TM<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"Bfrtip","language":{"info":"Showing _TOTAL_ entries"},"pageLength":10,"autoWidth":true,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 2, 3, \",\", \".\", true, null);\n  }"},{"className":"dt-right","targets":[1,2,3,4,5]},{"name":"date","targets":0},{"name":"F","targets":1},{"name":"GM","targets":2},{"name":"HMC","targets":3},{"name":"STLA","targets":4},{"name":"TM","targets":5}],"order":[],"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'color':'#FFFFFF','background-color':'#121212'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'color':'#FFFFFF','background-color':isNaN(parseFloat(value)) ? '' : value <= 15.2 ? \"#3D5AFE\" : value <= 28.2 ? \"#651FFF\" : value <= 50.34 ? \"#D500F9\" : \"#FF1744\"});\n}"}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.rowCallback"],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -218,43 +198,11 @@ ul.task-list li input[type="checkbox"] {
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<p>Este gráfico mostra os retornos diários (%) das ações das empresas Ford (F), General Motors (GM), Honda (HMC), Stellantis (STLA) e Toyota (TM) ao longo dos últimos 5 anos.</p>
-<p>Cada linha vertical representa o retorno percentual de uma ação em um determinado dia. Observa-se uma grande dispersão de valores, variando entre cerca de -20% e +15%, o que indica a volatilidade típica do mercado de ações.</p>
-<p>Apesar da alta densidade de dados, é possível notar que:</p>
-<p>Os retornos oscilam fortemente em torno de 0%, o que é comum em retornos diários.</p>
-<p>Não há uma empresa que se destaque visualmente por ter retornos significativamente mais voláteis do que as outras ao longo do tempo.</p>
-<p>Em alguns momentos, ocorrem picos de alta ou queda acentuada, provavelmente relacionados a anúncios importantes, divulgação de resultados ou eventos macroeconômicos.</p>
-<p>Este gráfico é útil para avaliar o nível de risco (volatilidade) associado a cada uma dessas ações no curto prazo.</p>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 <div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="analise_acoes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<p>Este gráfico apresenta a distribuição dos retornos diários (%) das ações das empresas F, GM, HMC, STLA e TM por meio de boxplots, facilitando a comparação da volatilidade e tendência central de cada uma.</p>
-<p>Aqui estão alguns destaques:</p>
-<p>Todas as empresas apresentam mediana próxima de 0%, o que é comum para retornos diários em períodos longos.</p>
-<p>As ações da Ford (F) e da Stellantis (STLA) parecem ter uma distribuição mais espalhada, com uma amplitude interquartil maior, indicando maior volatilidade.</p>
-<p>Toyota (TM) e Honda (HMC) possuem uma distribuição mais concentrada, sugerindo retornos diários mais estáveis.</p>
-<p>Há diversos outliers (pontos fora das “caixas”), tanto positivos quanto negativos, que representam dias com retornos extremos — possivelmente ligados a eventos específicos no mercado.</p>
-<p>Este gráfico complementa bem o gráfico anterior ao fornecer uma visão estatística clara da variabilidade e simetria dos retornos de cada empresa.</p>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
     <template>Expand</template>

@@ -100,6 +100,13 @@ portfolio_prices %>%
   theme(legend.position = "bottom")
 ```
 
+Este gráfico exibe a variação dos preços das ações de cinco montadoras (Ford - F, General Motors - GM, Honda - HMC, Stellantis - STLA e Toyota - TM) ao longo dos últimos 5 anos, no período de 09/04/2020 a 08/04/2025.
+
+A linha roxa (Toyota - TM) destaca-se com os preços mais elevados, ultrapassando os $250 em seu pico. A General Motors (GM), representada pela linha rosa, apresenta oscilações acentuadas e ocupa o segundo lugar em termos de valorização. As demais empresas (HMC, STLA e F) têm preços mais estáveis e inferiores, mantendo-se abaixo dos $50 durante todo o período.
+
+O gráfico permite comparar o desempenho das ações no setor automotivo, evidenciando a volatilidade e tendências específicas de cada empresa.
+
+
 ```{r}
 # Tabela com estilo para fundo escuro
 datatable(
@@ -157,6 +164,20 @@ portfolio_returns %>%
   theme(legend.position = "bottom")
 ```
 
+Este gráfico mostra os retornos diários (%) das ações das empresas Ford (F), General Motors (GM), Honda (HMC), Stellantis (STLA) e Toyota (TM) ao longo dos últimos 5 anos.
+
+Cada linha vertical representa o retorno percentual de uma ação em um determinado dia. Observa-se uma grande dispersão de valores, variando entre cerca de -20% e +15%, o que indica a volatilidade típica do mercado de ações.
+
+Apesar da alta densidade de dados, é possível notar que:
+
+Os retornos oscilam fortemente em torno de 0%, o que é comum em retornos diários.
+
+Não há uma empresa que se destaque visualmente por ter retornos significativamente mais voláteis do que as outras ao longo do tempo.
+
+Em alguns momentos, ocorrem picos de alta ou queda acentuada, provavelmente relacionados a anúncios importantes, divulgação de resultados ou eventos macroeconômicos.
+
+Este gráfico é útil para avaliar o nível de risco (volatilidade) associado a cada uma dessas ações no curto prazo.
+
 ```{r}
 #| fig.height: 8
 # Boxplot de retornos para comparação
@@ -178,3 +199,17 @@ portfolio_returns %>%
   ) +
   theme(legend.position = "none")
 ```
+
+Este gráfico apresenta a distribuição dos retornos diários (%) das ações das empresas F, GM, HMC, STLA e TM por meio de boxplots, facilitando a comparação da volatilidade e tendência central de cada uma.
+
+Aqui estão alguns destaques:
+
+Todas as empresas apresentam mediana próxima de 0%, o que é comum para retornos diários em períodos longos.
+
+As ações da Ford (F) e da Stellantis (STLA) parecem ter uma distribuição mais espalhada, com uma amplitude interquartil maior, indicando maior volatilidade.
+
+Toyota (TM) e Honda (HMC) possuem uma distribuição mais concentrada, sugerindo retornos diários mais estáveis.
+
+Há diversos outliers (pontos fora das "caixas"), tanto positivos quanto negativos, que representam dias com retornos extremos — possivelmente ligados a eventos específicos no mercado.
+
+Este gráfico complementa bem o gráfico anterior ao fornecer uma visão estatística clara da variabilidade e simetria dos retornos de cada empresa.
