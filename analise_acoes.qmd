@@ -213,3 +213,38 @@ Toyota (TM) e Honda (HMC) possuem uma distribuição mais concentrada, sugerindo
 Há diversos outliers (pontos fora das "caixas"), tanto positivos quanto negativos, que representam dias com retornos extremos — possivelmente ligados a eventos específicos no mercado.
 
 Este gráfico complementa bem o gráfico anterior ao fornecer uma visão estatística clara da variabilidade e simetria dos retornos de cada empresa.
+
+```{r}
+#| warning: false
+#| message: false
+#| fig.height: 6
+#| fig.width: 8
+
+library(plotly)
+library(magrittr)
+
+# Dados
+df <- data.frame(
+  Empresa = rep(c("F", "GM", "HMC", "STLA", "TM"), each = 50),
+  Retorno = c(rnorm(50, 0.2, 0.05), rnorm(50, 0.15, 0.04),
+              rnorm(50, 0.18, 0.03), rnorm(50, 0.22, 0.06),
+              rnorm(50, 0.19, 0.05))
+)
+
+plot_ly(
+  data = df,
+  x = ~Empresa,
+  y = ~Retorno,
+  type = "box",
+  color = ~Empresa,
+  boxpoints = "all",
+  jitter = 0.3,
+  pointpos = -1.8
+) %>%
+  layout(
+    title = "Distribuição Interativa dos Retornos por Empresa",
+    yaxis = list(title = "Retorno (%)"),
+    xaxis = list(title = "Empresa")
+  )
+```
+
