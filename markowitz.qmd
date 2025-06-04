@@ -1,0 +1,454 @@
+---
+title: "Modelo de Markowitz"
+format: 
+  html:
+    css: styles_markowitz.css   # CSS exclusivo para este arquivo 
+execute:
+  echo: false
+---
+
+## 📊 Otimização de Carteira 
+
+
+### 📈 O que é?
+O modelo de Markowitz, também chamado de Teoria Moderna de Portfólios, busca construir uma carteira de ativos que ofereça o melhor equilíbrio possível entre risco e retorno.
+
+### ⚙️ Como funciona o modelo?
+#### Entradas principais:
+
+🔸 Retorno esperado de cada ativo
+
+🔸 Matriz de covariância dos retornos (risco e correlação entre os ativos)
+
+O objetivo do modelo é: Minimizar a volatilidade (risco) da carteira
+
+#### Sujeito a:
+
+✅ O retorno da carteira ser igual a um alvo (target_return)
+
+✅ A soma dos pesos ser igual a 1 (100% do capital investido)
+
+✅ (Opcional) Pesos ≥ 0 → não permite venda a descoberto (short)
+
+
+
+### ⚠️ Por que a ação STLA ficou com peso zero?
+→ Isso acontece quando o algoritmo entende que incluir STLA não ajuda a melhorar o equilíbrio risco-retorno da carteira. As razões típicas são:
+
+✔️ 1. Retorno ajustado ao risco ruim
+STLA tem um retorno esperado baixo para o nível de risco que apresenta, quando comparada às outras ações.
+
+✔️ 2. Alta correlação com outras ações
+Se a STLA está muito correlacionada, por exemplo, com GM ou TM, o modelo pode preferir esses ativos que entregam um retorno/riscos melhor.
+
+✔️ 3. Solução de Canto (Corner Solution)
+Em otimizações com a restrição de peso ≥ 0, é comum que alguns ativos sejam eliminados da carteira (peso zero), porque eles não são necessários para atingir o retorno desejado da forma mais eficiente possível.
+
+### 📊 Analogia simples:
+Imagine montar um time de futebol. Se dois jogadores fazem exatamente a mesma função, você não escala os dois — escolhe aquele que faz melhor com menor custo. O Markowitz faz isso, só que com risco e retorno.
+
+### 🔥 Conclusão prática:
+O modelo não diz que STLA é uma má ação isoladamente.
+
+Ele diz que, dado o retorno desejado e as características estatísticas (volatilidade e correlação), a STLA não melhora a carteira no ponto ótimo escolhido.
+
+Se você mudar o target_return ou permitir vendas a descoberto, pode ser que ela entre na carteira.
+
+
+
+```{r , include=FALSE}
+# 📦 Pacotes necessários
+library(tidyquant)
+library(tidyverse)
+library(quadprog)
+library(PerformanceAnalytics)
+
+# 🔗 Definir os tickers das 5 ações
+tickers <- c("F", "GM", "HMC", "STLA", "TM")
+
+# 🔽 Obter dados dos últimos 2 anos
+dados <- tq_get(tickers,
+                 from = Sys.Date() - 365*2,
+                 to = Sys.Date(),
+                 get = "stock.prices")
+
+# 📈 Calcular os retornos logarítmicos diários
+retornos <- dados %>%
+  group_by(symbol) %>%
+  tq_transmute(select = adjusted,
+               mutate_fun = periodReturn,
+               period = "daily",
+               type = "log",
+               col_rename = "retorno") %>%
+  pivot_wider(names_from = symbol, values_from = retorno) %>%
+  drop_na()
+
+# 📊 Matriz de retornos
+matriz_retorno <- as.matrix(retornos[,-1])
+
+# 📏 Matriz de covariância dos retornos
+cov_mat <- cov(matriz_retorno)
+
+# 📈 Retornos médios diários
+mean_returns <- colMeans(matriz_retorno)
+
+# 🔧 Número de ativos
+n_assets <- ncol(matriz_retorno)
+
+# 📐 Definir os inputs para o modelo de Markowitz
+Dmat <- 2 * cov_mat
+dvec <- rep(0, n_assets)
+
+# 🔍 Verificar os retornos mínimo e máximo possíveis
+
+## Retorno mínimo (carteira de mínima variância)
+Amat_minvar <- cbind(rep(1, n_assets), diag(1, n_assets))
+bvec_minvar <- c(1, rep(0, n_assets))
+sol_minvar <- solve.QP(Dmat, dvec, Amat_minvar, bvec_minvar, meq = 1)
+retorno_min <- sum(sol_minvar$solution * mean_returns)
+
+## Retorno máximo (100% no ativo de maior retorno esperado)
+retorno_max <- max(mean_returns)
+
+cat("✅ Retorno mínimo possível:", round(retorno_min, 6), "\n")
+cat("✅ Retorno máximo possível:", round(retorno_max, 6), "\n")
+
+# 🚩 Defina o retorno alvo dentro desse intervalo
+target_return <- 0.0005  # Ajuste aqui conforme desejado
+
+if(target_return < retorno_min | target_return > retorno_max) {
+  stop("❌ O retorno alvo está fora dos limites viáveis. Ajuste o target_return.")
+}
+
+# 🏗️ Definir as restrições
+Amat <- cbind(rep(1, n_assets), mean_returns, diag(1, n_assets))
+bvec <- c(1, target_return, rep(0, n_assets))
+
+# 🚀 Resolver o problema quadrático
+sol <- solve.QP(Dmat, dvec, Amat, bvec, meq = 2)
+
+# 🔎 Pesos ótimos
+pesos_otimos <- sol$solution
+nomes_ativos <- colnames(matriz_retorno)
+
+resultado_pesos <- tibble(
+  Acao = nomes_ativos,
+  Peso = round(pesos_otimos, 4)
+)
+
+resultado_pesos
+
+
+```
+
+```{r}
+# Plotar os pesos com a mesma cor de fundo do documento
+resultado_pesos %>%
+  ggplot(aes(x = reorder(Acao, Peso), y = Peso, fill = Acao)) +
+  geom_col(alpha = 0.9, width = 0.7) +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent, 
+                     expand = expansion(mult = c(0, 0.05))) +
+  scale_fill_viridis_d(option = "plasma", begin = 0.2, end = 0.9) +
+  labs(title = "Pesos Ótimos da Carteira",
+       subtitle = "Distribuição percentual por ação",
+       x = "Ação",
+       y = "Peso (%)",
+       fill = "Ação") +
+  theme_void() +
+  theme(
+    # Fundo igual ao documento (#1a1a1a)
+    plot.background = element_rect(fill = "#1a1a1a", color = NA),
+    panel.background = element_rect(fill = "#1a1a1a", color = NA),
+    
+    # Texto branco para contraste
+    text = element_text(color = "white"),
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5, 
+                              margin = margin(b = 10), color = "white"),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, 
+                                 margin = margin(b = 20), color = "grey80"),
+    
+    # Eixos
+    axis.text.x = element_text(size = 11, color = "white"),
+    axis.text.y = element_text(size = 11, color = "white"),
+    axis.title.x = element_text(size = 12, margin = margin(t = 15), color = "white"),
+    axis.title.y = element_text(size = 12, margin = margin(r = 15), color = "white"),
+    
+    # Grid sutil
+    panel.grid.major.x = element_line(color = "grey40", linewidth = 0.3),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    
+    # Legenda
+    legend.background = element_rect(fill = "#1a1a1a", color = NA),
+    legend.text = element_text(color = "white", size = 10),
+    legend.title = element_text(color = "white", size = 11, face = "bold"),
+    legend.key = element_rect(fill = "#1a1a1a", color = NA),
+    legend.position = "right",
+    legend.margin = margin(l = 20),
+    
+    # Margens
+    plot.margin = margin(20, 20, 20, 20)
+  )
+
+```
+
+```{r , include=FALSE}
+
+# Pacotes
+library(tidyquant)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+# 🔗 Ações da carteira (excluindo STLA)
+tickers <- c("F", "GM", "HMC", "TM")
+
+# 📅 Período histórico
+dados <- tq_get(tickers,
+                from = "2020-01-01",
+                to = Sys.Date(),
+                get = "stock.prices")
+
+# 📈 Calcular retornos diários
+retornos <- dados %>%
+  group_by(symbol) %>%
+  tq_transmute(select = adjusted,
+               mutate_fun = periodReturn,
+               period = "daily",
+               col_rename = "retorno")
+
+# 🎯 Calcular métricas de cada ação
+metricas_acao <- retornos %>%
+  group_by(symbol) %>%
+  summarise(
+    retorno_medio = mean(retorno),
+    volatilidade = sd(retorno),
+    sharpe_simples = retorno_medio / volatilidade
+  )
+
+# 👇 Criar os 3 cenários: pessimista, realista, otimista
+cenarios <- metricas_acao %>%
+  mutate(
+    retorno_pessimista = retorno_medio - volatilidade,
+    retorno_realista = retorno_medio,
+    retorno_otimista = retorno_medio + volatilidade
+  ) %>%
+  select(symbol, starts_with("retorno"), volatilidade, sharpe_simples)
+
+print(cenarios)
+
+
+```
+
+```{r}
+
+# 📦 Pacotes
+library(tidyquant)
+library(dplyr)
+library(gt)
+
+# 🔗 Ações da carteira (exceto STLA que tem peso zero)
+tickers <- c("F", "GM", "HMC", "TM")
+
+# 📅 Dados de preço
+dados <- tq_get(tickers,
+                from = "2020-01-01",
+                to = Sys.Date(),
+                get = "stock.prices")
+
+# 📈 Calcular retornos diários
+retornos <- dados %>%
+  group_by(symbol) %>%
+  tq_transmute(select = adjusted,
+               mutate_fun = periodReturn,
+               period = "daily",
+               col_rename = "retorno")
+
+# 🎯 Calcular retorno médio e volatilidade diária
+metricas <- retornos %>%
+  group_by(symbol) %>%
+  summarise(
+    retorno_diario = mean(retorno, na.rm = TRUE),
+    volatilidade_diaria = sd(retorno, na.rm = TRUE)
+  ) %>%
+  mutate(
+    retorno_mensal = retorno_diario * 21,
+    volatilidade_mensal = volatilidade_diaria * sqrt(21),
+    
+    retorno_anual = retorno_diario * 252,
+    volatilidade_anual = volatilidade_diaria * sqrt(252),
+    
+    retorno_5anos = retorno_anual * 5,
+    volatilidade_5anos = volatilidade_anual * sqrt(5)
+  )
+
+# 💰 Simular cenários para cada horizonte
+investimento <- 1000
+
+cenarios <- metricas %>%
+  mutate(
+    # Mensal
+    pess_mensal = investimento * (1 + (retorno_mensal - volatilidade_mensal)),
+    real_mensal = investimento * (1 + retorno_mensal),
+    otim_mensal = investimento * (1 + (retorno_mensal + volatilidade_mensal)),
+    
+    # Anual
+    pess_anual = investimento * (1 + (retorno_anual - volatilidade_anual)),
+    real_anual = investimento * (1 + retorno_anual),
+    otim_anual = investimento * (1 + (retorno_anual + volatilidade_anual)),
+    
+    # 5 anos
+    pess_5anos = investimento * (1 + (retorno_5anos - volatilidade_5anos)),
+    real_5anos = investimento * (1 + retorno_5anos),
+    otim_5anos = investimento * (1 + (retorno_5anos + volatilidade_5anos))
+  ) %>%
+  select(symbol,
+         pess_mensal, real_mensal, otim_mensal,
+         pess_anual, real_anual, otim_anual,
+         pess_5anos, real_5anos, otim_5anos)
+
+
+```
+
+```{r}
+
+# TABELA MENSAL
+tabela_mensal <- cenarios %>%
+  select(symbol, pess_mensal, real_mensal, otim_mensal) %>%
+  gt() %>%
+  tab_header(
+    title = md("**Simulação de Retorno Mensal (21 dias úteis)**"),
+    subtitle = "Investindo US$1.000 por ação"
+  ) %>%
+  fmt_currency(
+    columns = 2:4,
+    currency = "USD"
+  ) %>%
+  cols_label(
+    symbol = "Ação",
+    pess_mensal = "🔻 Pessimista",
+    real_mensal = "🔸 Realista",
+    otim_mensal = "🔺 Otimista"
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white")
+    ),
+    locations = cells_body()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = list(
+      cells_column_labels(everything()),
+      cells_title(groups = "title"),
+      cells_title(groups = "subtitle")
+    )
+  ) %>%
+  opt_table_font(
+    font = list(gt::google_font("Roboto Mono"))
+  )
+
+tabela_mensal
+
+
+```
+
+```{r}
+
+# TABELA ANUAL
+tabela_anual <- cenarios %>%
+  select(symbol, pess_anual, real_anual, otim_anual) %>%
+  gt() %>%
+  tab_header(
+    title = md("**Simulação de Retorno Anual (252 dias úteis)**"),
+    subtitle = "Investindo US$1.000 por ação"
+  ) %>%
+  fmt_currency(
+    columns = 2:4,
+    currency = "USD"
+  ) %>%
+  cols_label(
+    symbol = "Ação",
+    pess_anual = "🔻 Pessimista",
+    real_anual = "🔸 Realista",
+    otim_anual = "🔺 Otimista"
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white")
+    ),
+    locations = cells_body()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = list(
+      cells_column_labels(everything()),
+      cells_title(groups = "title"),
+      cells_title(groups = "subtitle")
+    )
+  ) %>%
+  opt_table_font(
+    font = list(gt::google_font("Roboto Mono"))
+  )
+
+tabela_anual
+
+
+```
+
+```{r}
+
+# TABELA 5 ANOS
+tabela_5anos <- cenarios %>%
+  select(symbol, pess_5anos, real_5anos, otim_5anos) %>%
+  gt() %>%
+  tab_header(
+    title = md("**Simulação de Retorno em 5 Anos**"),
+    subtitle = "Investindo US$1.000 por ação"
+  ) %>%
+  fmt_currency(
+    columns = 2:4,
+    currency = "USD"
+  ) %>%
+  cols_label(
+    symbol = "Ação",
+    pess_5anos = "🔻 Pessimista",
+    real_5anos = "🔸 Realista",
+    otim_5anos = "🔺 Otimista"
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white")
+    ),
+    locations = cells_body()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "black"),
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = list(
+      cells_column_labels(everything()),
+      cells_title(groups = "title"),
+      cells_title(groups = "subtitle")
+    )
+  ) %>%
+  opt_table_font(
+    font = list(gt::google_font("Roboto Mono"))
+  )
+
+tabela_5anos
+
+
+```

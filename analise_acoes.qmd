@@ -54,7 +54,7 @@ tema_escuro <- theme_minimal() +
 theme_set(tema_escuro)  # Aplicar o tema escuro globalmente
 ```
 
-```{r}
+```{r, include=FALSE}
 # Definir os tickers
 tickers <- c("F", "GM", "HMC", "STLA", "TM")
 
