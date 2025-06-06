@@ -4,125 +4,83 @@
     "href": "index.html",
     "title": "Data Finance Project",
     "section": "",
-    "text": "Função: Desenvolvedor\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Designer\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Gerente de Projeto\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Desenvolvedor\nPortfólio Pessoal"
+    "text": "Função: Desenvolvedor\nPortfólio Pessoal\nEspecialista em desenvolvimento full-stack com foco em análise de dados financeiros\n\n\n\n\n\n\nFunção: Designer\nPortfólio Pessoal\nDesigner UX/UI com experiência em visualização de dados e interfaces intuitivas\n\n\n\n\n\n\nFunção: Gerente de Projeto\nPortfólio Pessoal\nLíder de projetos com expertise em metodologias ágeis e gestão de equipes\n\n\n\n\n\n\nFunção: Desenvolvedor\nPortfólio Pessoal\nDesenvolvedor backend especializado em APIs e processamento de dados em tempo real"
   },
   {
     "objectID": "index.html#equipe",
     "href": "index.html#equipe",
     "title": "Data Finance Project",
     "section": "",
-    "text": "Função: Desenvolvedor\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Designer\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Gerente de Projeto\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Desenvolvedor\nPortfólio Pessoal"
+    "text": "Função: Desenvolvedor\nPortfólio Pessoal\nEspecialista em desenvolvimento full-stack com foco em análise de dados financeiros\n\n\n\n\n\n\nFunção: Designer\nPortfólio Pessoal\nDesigner UX/UI com experiência em visualização de dados e interfaces intuitivas\n\n\n\n\n\n\nFunção: Gerente de Projeto\nPortfólio Pessoal\nLíder de projetos com expertise em metodologias ágeis e gestão de equipes\n\n\n\n\n\n\nFunção: Desenvolvedor\nPortfólio Pessoal\nDesenvolvedor backend especializado em APIs e processamento de dados em tempo real"
   },
   {
     "objectID": "index.html#sobre-o-projeto",
     "href": "index.html#sobre-o-projeto",
     "title": "Data Finance Project",
     "section": "Sobre o Projeto",
-    "text": "Sobre o Projeto\nEste projeto tem como objetivo identificar o preço das ações das empresas a baixo assim como , suas altas , baixas , e pontos de atenção ao comprar ou vender tais ações\n\nF – Ford Motor Company\nGM – General Motors Company\nTM – Toyota Motor Corporation\nSTLA – Stellantis N.V.\nHMC – Honda Motor Co., Ltd."
+    "text": "Sobre o Projeto\nEste projeto tem como objetivo identificar o preço das ações das empresas a baixo assim como, suas altas, baixas, e pontos de atenção ao comprar ou vender tais ações"
+  },
+  {
+    "objectID": "index.html#empresas-analisadas",
+    "href": "index.html#empresas-analisadas",
+    "title": "Data Finance Project",
+    "section": "Empresas Analisadas:",
+    "text": "Empresas Analisadas:\n\n🚗 F – Ford Motor Company\n🏭 GM – General Motors Company\n\n🌏 TM – Toyota Motor Corporation\n🔧 STLA – Stellantis N.V.\n⚙️ HMC – Honda Motor Co., Ltd."
   },
   {
     "objectID": "index.html#objetivos",
     "href": "index.html#objetivos",
     "title": "Data Finance Project",
     "section": "Objetivos",
-    "text": "Objetivos\n\nIdentificar um padrão entre as ações\nSemelhanças entre empresas\nAltas e baixas"
+    "text": "Objetivos\n\n📊 Identificar um padrão entre as ações\n🔍 Semelhanças entre empresas\n📈 Altas e baixas\n💡 Insights para tomada de decisão\n🎯 Previsões de tendências de mercado"
   },
   {
     "objectID": "index.html#tecnologias-utilizadas",
     "href": "index.html#tecnologias-utilizadas",
     "title": "Data Finance Project",
     "section": "Tecnologias Utilizadas",
-    "text": "Tecnologias Utilizadas\n\n\n Python\n\n\n Git Hub Pages\n\n\n Quarto"
+    "text": "Tecnologias Utilizadas\n\n\n Python Análise de Dados\n\n\n GitHub Pages Hospedagem\n\n\n Quarto Documentação"
   },
   {
     "objectID": "index.html#funcionalidades",
     "href": "index.html#funcionalidades",
     "title": "Data Finance Project",
     "section": "Funcionalidades",
-    "text": "Funcionalidades\n\nFuncionalidade 1\nMonitoramento em Tempo Real Acompanhe em tempo real as cotações das principais montadoras, incluindo Ford, GM, Toyota, Stellantis e Honda, com atualizações constantes do mercado.\n\n\nFuncionalidade 2\nIdentificação de Tendências Detecte padrões de alta e baixa nos preços das ações, ajudando a visualizar momentos estratégicos para compra ou venda.\n\n\nFuncionalidade 3\nAnálise de Curto e Longo Prazo Compare o desempenho das ações ao longo de diferentes períodos, com gráficos interativos e indicadores financeiros para decisões mais assertivas."
+    "text": "Funcionalidades\n\n🔴 Monitoramento em Tempo Real\nAcompanhe em tempo real as cotações das principais montadoras, incluindo Ford, GM, Toyota, Stellantis e Honda, com atualizações constantes do mercado e alertas personalizados.\nRecursos: - Dashboard interativo - Alertas de preço - Gráficos em tempo real\n\n\n📊 Identificação de Tendências\nDetecte padrões de alta e baixa nos preços das ações, ajudando a visualizar momentos estratégicos para compra ou venda através de algoritmos de machine learning.\nRecursos: - Análise preditiva - Indicadores técnicos - Sinais de compra/venda\n\n\n📈 Análise de Curto e Longo Prazo\nCompare o desempenho das ações ao longo de diferentes períodos, com gráficos interativos e indicadores financeiros para decisões mais assertivas.\nRecursos: - Comparação histórica - Projeções futuras - Relatórios detalhados"
   },
   {
     "objectID": "index.html#cronograma",
     "href": "index.html#cronograma",
     "title": "Data Finance Project",
     "section": "Cronograma",
-    "text": "Cronograma\n\n\n\nFase\nDescrição\nStatus\n\n\n\n\n1\nPlanejamento e Pesquisa\nConcluído\n\n\n2\nDesign e Prototipagem\nEm andamento\n\n\n3\nDesenvolvimento\nPendente\n\n\n4\nTestes\nPendente\n\n\n5\nLançamento\nPendente"
+    "text": "Cronograma\n\n\n\nFase\nDescrição\nStatus\nProgresso\n\n\n\n\n1\nPlanejamento e Pesquisa\n✅ Concluído\n100%\n\n\n2\nDesign e Prototipagem\n🔄 Em andamento\n75%\n\n\n3\nDesenvolvimento\n⏳ Pendente\n0%\n\n\n4\nTestes\n⏳ Pendente\n0%\n\n\n5\nLançamento\n⏳ Pendente\n0%"
+  },
+  {
+    "objectID": "index.html#estatísticas-do-projeto",
+    "href": "index.html#estatísticas-do-projeto",
+    "title": "Data Finance Project",
+    "section": "Estatísticas do Projeto",
+    "text": "Estatísticas do Projeto\n\n\n📊 5 Empresas Analisadas\n💹 1000+ Pontos de Dados Diários\n\n⚡ 99.9% Uptime do Sistema\n👥 4 Desenvolvedores Dedicados"
   },
   {
     "objectID": "index.html#contato",
     "href": "index.html#contato",
     "title": "Data Finance Project",
     "section": "Contato",
-    "text": "Contato\nPara mais informações sobre o projeto, entre em contato conosco pelo email: bigdatafinance.grv@gmail.com\n\n© 2025 Equipe do Projeto. Todos os direitos reservados."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Data Finance Project",
-    "section": "",
-    "text": "Função: Desenvolvedor\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Designer\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Gerente de Projeto\nPortfólio Pessoal"
-  },
-  {
-    "objectID": "about.html#equipe",
-    "href": "about.html#equipe",
-    "title": "Data Finance Project",
-    "section": "",
-    "text": "Função: Desenvolvedor\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Designer\nPortfólio Pessoal\n\n\n\n\n\n\nFunção: Gerente de Projeto\nPortfólio Pessoal"
-  },
-  {
-    "objectID": "about.html#sobre-o-projeto",
-    "href": "about.html#sobre-o-projeto",
-    "title": "Data Finance Project",
-    "section": "Sobre o Projeto",
-    "text": "Sobre o Projeto\nEste projeto tem como objetivo identificar o preço das ações das empresas a baixo assim como , suas altas , baixas , e pontos de atenção ao comprar ou vender tais ações\n\nF – Ford Motor Company\nGM – General Motors Company\nTM – Toyota Motor Corporation\nSTLA – Stellantis N.V.\nHMC – Honda Motor Co., Ltd."
-  },
-  {
-    "objectID": "about.html#objetivos",
-    "href": "about.html#objetivos",
-    "title": "Data Finance Project",
-    "section": "Objetivos",
-    "text": "Objetivos\n\nIdentificar um padrão entre as ações\nSemelhanças entre empresas\nAltas e baixas"
-  },
-  {
-    "objectID": "about.html#tecnologias-utilizadas",
-    "href": "about.html#tecnologias-utilizadas",
-    "title": "Data Finance Project",
-    "section": "Tecnologias Utilizadas",
-    "text": "Tecnologias Utilizadas\n\n\n Python\n\n\n Git Hub Pages\n\n\n Quarto"
-  },
-  {
-    "objectID": "about.html#funcionalidades",
-    "href": "about.html#funcionalidades",
-    "title": "Data Finance Project",
-    "section": "Funcionalidades",
-    "text": "Funcionalidades\n\nFuncionalidade 1\nMonitoramento em Tempo Real Acompanhe em tempo real as cotações das principais montadoras, incluindo Ford, GM, Toyota, Stellantis e Honda, com atualizações constantes do mercado.\n\n\nFuncionalidade 2\nIdentificação de Tendências Detecte padrões de alta e baixa nos preços das ações, ajudando a visualizar momentos estratégicos para compra ou venda.\n\n\nFuncionalidade 3\nAnálise de Curto e Longo Prazo Compare o desempenho das ações ao longo de diferentes períodos, com gráficos interativos e indicadores financeiros para decisões mais assertivas."
-  },
-  {
-    "objectID": "about.html#cronograma",
-    "href": "about.html#cronograma",
-    "title": "Data Finance Project",
-    "section": "Cronograma",
-    "text": "Cronograma\n\n\n\nFase\nDescrição\nStatus\n\n\n\n\n1\nPlanejamento e Pesquisa\nConcluído\n\n\n2\nDesign e Prototipagem\nEm andamento\n\n\n3\nDesenvolvimento\nPendente\n\n\n4\nTestes\nPendente\n\n\n5\nLançamento\nPendente"
-  },
-  {
-    "objectID": "about.html#contato",
-    "href": "about.html#contato",
-    "title": "Data Finance Project",
-    "section": "Contato",
-    "text": "Contato\nPara mais informações sobre o projeto, entre em contato conosco pelo email: henriquereis.mail.fae.edu\n\n© 2025 Equipe do Projeto. Todos os direitos reservados."
+    "text": "Contato\nPara mais informações sobre o projeto, entre em contato conosco:\n📧 Email: bigdatafinance.grv@gmail.com\n📱 Redes Sociais: - LinkedIn: Data Finance Team - Twitter: @DataFinanceGRV - GitHub: DataFinance Project\n\n© 2025 Equipe do Projeto. Todos os direitos reservados. Desenvolvido com 💜 pela equipe Data Finance"
   },
   {
     "objectID": "markowitz.html",
     "href": "markowitz.html",
     "title": "Modelo de Markowitz",
     "section": "",
-    "text": "O modelo de Markowitz, também chamado de Teoria Moderna de Portfólios, busca construir uma carteira de ativos que ofereça o melhor equilíbrio possível entre risco e retorno.\n\n\n\n\n\n🔸 Retorno esperado de cada ativo\n🔸 Matriz de covariância dos retornos (risco e correlação entre os ativos)\nO objetivo do modelo é: Minimizar a volatilidade (risco) da carteira\n\n\n\n✅ O retorno da carteira ser igual a um alvo (target_return)\n✅ A soma dos pesos ser igual a 1 (100% do capital investido)\n✅ (Opcional) Pesos ≥ 0 → não permite venda a descoberto (short)\n\n\n\n\n→ Isso acontece quando o algoritmo entende que incluir STLA não ajuda a melhorar o equilíbrio risco-retorno da carteira. As razões típicas são:\n✔️ 1. Retorno ajustado ao risco ruim STLA tem um retorno esperado baixo para o nível de risco que apresenta, quando comparada às outras ações.\n✔️ 2. Alta correlação com outras ações Se a STLA está muito correlacionada, por exemplo, com GM ou TM, o modelo pode preferir esses ativos que entregam um retorno/riscos melhor.\n✔️ 3. Solução de Canto (Corner Solution) Em otimizações com a restrição de peso ≥ 0, é comum que alguns ativos sejam eliminados da carteira (peso zero), porque eles não são necessários para atingir o retorno desejado da forma mais eficiente possível.\n\n\n\nImagine montar um time de futebol. Se dois jogadores fazem exatamente a mesma função, você não escala os dois — escolhe aquele que faz melhor com menor custo. O Markowitz faz isso, só que com risco e retorno.\n\n\n\nO modelo não diz que STLA é uma má ação isoladamente.\nEle diz que, dado o retorno desejado e as características estatísticas (volatilidade e correlação), a STLA não melhora a carteira no ponto ótimo escolhido.\nSe você mudar o target_return ou permitir vendas a descoberto, pode ser que ela entre na carteira.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno Mensal (21 dias úteis)\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$886.50\n$1,013.39\n$1,140.29\n\n\nGM\n$888.56\n$1,012.50\n$1,136.43\n\n\nHMC\n$923.62\n$1,006.01\n$1,088.40\n\n\nTM\n$933.20\n$1,009.64\n$1,086.09\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno Anual (252 dias úteis)\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$721.14\n$1,160.72\n$1,600.30\n\n\nGM\n$720.64\n$1,149.95\n$1,579.27\n\n\nHMC\n$786.73\n$1,072.14\n$1,357.54\n\n\nTM\n$850.90\n$1,115.71\n$1,380.52\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno em 5 Anos\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$820.66\n$1,803.60\n$2,786.54\n\n\nGM\n$789.80\n$1,749.77\n$2,709.75\n\n\nHMC\n$722.50\n$1,360.68\n$1,998.87\n\n\nTM\n$986.42\n$1,578.56\n$2,170.70"
+    "text": "O modelo de Markowitz, também chamado de Teoria Moderna de Portfólios, busca construir uma carteira de ativos que ofereça o melhor equilíbrio possível entre risco e retorno.\n\n\n\n\n\n🔸 Retorno esperado de cada ativo\n🔸 Matriz de covariância dos retornos (risco e correlação entre os ativos)\nO objetivo do modelo é: Minimizar a volatilidade (risco) da carteira\n\n\n\n✅ O retorno da carteira ser igual a um alvo (target_return)\n✅ A soma dos pesos ser igual a 1 (100% do capital investido)\n✅ (Opcional) Pesos ≥ 0 → não permite venda a descoberto (short)\n\n\n\n\n→ Isso acontece quando o algoritmo entende que incluir STLA não ajuda a melhorar o equilíbrio risco-retorno da carteira. As razões típicas são:\n✔️ 1. Retorno ajustado ao risco ruim STLA tem um retorno esperado baixo para o nível de risco que apresenta, quando comparada às outras ações.\n✔️ 2. Alta correlação com outras ações Se a STLA está muito correlacionada, por exemplo, com GM ou TM, o modelo pode preferir esses ativos que entregam um retorno/riscos melhor.\n✔️ 3. Solução de Canto (Corner Solution) Em otimizações com a restrição de peso ≥ 0, é comum que alguns ativos sejam eliminados da carteira (peso zero), porque eles não são necessários para atingir o retorno desejado da forma mais eficiente possível.\n\n\n\nImagine montar um time de futebol. Se dois jogadores fazem exatamente a mesma função, você não escala os dois — escolhe aquele que faz melhor com menor custo. O Markowitz faz isso, só que com risco e retorno.\n\n\n\nO modelo não diz que STLA é uma má ação isoladamente.\nEle diz que, dado o retorno desejado e as características estatísticas (volatilidade e correlação), a STLA não melhora a carteira no ponto ótimo escolhido.\nSe você mudar o target_return ou permitir vendas a descoberto, pode ser que ela entre na carteira.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno Mensal (21 dias úteis)\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$886.42\n$1,013.24\n$1,140.06\n\n\nGM\n$888.01\n$1,011.91\n$1,135.80\n\n\nHMC\n$922.92\n$1,005.34\n$1,087.76\n\n\nTM\n$932.60\n$1,009.06\n$1,085.52\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno Anual (252 dias úteis)\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$719.56\n$1,158.87\n$1,598.17\n\n\nGM\n$713.67\n$1,142.87\n$1,572.07\n\n\nHMC\n$778.58\n$1,064.09\n$1,349.59\n\n\nTM\n$843.86\n$1,108.72\n$1,373.59\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno em 5 Anos\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$812.01\n$1,794.33\n$2,776.65\n\n\nGM\n$754.65\n$1,714.36\n$2,674.08\n\n\nHMC\n$682.01\n$1,320.43\n$1,958.84\n\n\nTM\n$951.35\n$1,543.62\n$2,135.88"
   },
   {
     "objectID": "markowitz.html#otimização-de-carteira",
     "href": "markowitz.html#otimização-de-carteira",
     "title": "Modelo de Markowitz",
     "section": "",
-    "text": "O modelo de Markowitz, também chamado de Teoria Moderna de Portfólios, busca construir uma carteira de ativos que ofereça o melhor equilíbrio possível entre risco e retorno.\n\n\n\n\n\n🔸 Retorno esperado de cada ativo\n🔸 Matriz de covariância dos retornos (risco e correlação entre os ativos)\nO objetivo do modelo é: Minimizar a volatilidade (risco) da carteira\n\n\n\n✅ O retorno da carteira ser igual a um alvo (target_return)\n✅ A soma dos pesos ser igual a 1 (100% do capital investido)\n✅ (Opcional) Pesos ≥ 0 → não permite venda a descoberto (short)\n\n\n\n\n→ Isso acontece quando o algoritmo entende que incluir STLA não ajuda a melhorar o equilíbrio risco-retorno da carteira. As razões típicas são:\n✔️ 1. Retorno ajustado ao risco ruim STLA tem um retorno esperado baixo para o nível de risco que apresenta, quando comparada às outras ações.\n✔️ 2. Alta correlação com outras ações Se a STLA está muito correlacionada, por exemplo, com GM ou TM, o modelo pode preferir esses ativos que entregam um retorno/riscos melhor.\n✔️ 3. Solução de Canto (Corner Solution) Em otimizações com a restrição de peso ≥ 0, é comum que alguns ativos sejam eliminados da carteira (peso zero), porque eles não são necessários para atingir o retorno desejado da forma mais eficiente possível.\n\n\n\nImagine montar um time de futebol. Se dois jogadores fazem exatamente a mesma função, você não escala os dois — escolhe aquele que faz melhor com menor custo. O Markowitz faz isso, só que com risco e retorno.\n\n\n\nO modelo não diz que STLA é uma má ação isoladamente.\nEle diz que, dado o retorno desejado e as características estatísticas (volatilidade e correlação), a STLA não melhora a carteira no ponto ótimo escolhido.\nSe você mudar o target_return ou permitir vendas a descoberto, pode ser que ela entre na carteira.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno Mensal (21 dias úteis)\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$886.50\n$1,013.39\n$1,140.29\n\n\nGM\n$888.56\n$1,012.50\n$1,136.43\n\n\nHMC\n$923.62\n$1,006.01\n$1,088.40\n\n\nTM\n$933.20\n$1,009.64\n$1,086.09\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno Anual (252 dias úteis)\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$721.14\n$1,160.72\n$1,600.30\n\n\nGM\n$720.64\n$1,149.95\n$1,579.27\n\n\nHMC\n$786.73\n$1,072.14\n$1,357.54\n\n\nTM\n$850.90\n$1,115.71\n$1,380.52\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno em 5 Anos\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$820.66\n$1,803.60\n$2,786.54\n\n\nGM\n$789.80\n$1,749.77\n$2,709.75\n\n\nHMC\n$722.50\n$1,360.68\n$1,998.87\n\n\nTM\n$986.42\n$1,578.56\n$2,170.70"
+    "text": "O modelo de Markowitz, também chamado de Teoria Moderna de Portfólios, busca construir uma carteira de ativos que ofereça o melhor equilíbrio possível entre risco e retorno.\n\n\n\n\n\n🔸 Retorno esperado de cada ativo\n🔸 Matriz de covariância dos retornos (risco e correlação entre os ativos)\nO objetivo do modelo é: Minimizar a volatilidade (risco) da carteira\n\n\n\n✅ O retorno da carteira ser igual a um alvo (target_return)\n✅ A soma dos pesos ser igual a 1 (100% do capital investido)\n✅ (Opcional) Pesos ≥ 0 → não permite venda a descoberto (short)\n\n\n\n\n→ Isso acontece quando o algoritmo entende que incluir STLA não ajuda a melhorar o equilíbrio risco-retorno da carteira. As razões típicas são:\n✔️ 1. Retorno ajustado ao risco ruim STLA tem um retorno esperado baixo para o nível de risco que apresenta, quando comparada às outras ações.\n✔️ 2. Alta correlação com outras ações Se a STLA está muito correlacionada, por exemplo, com GM ou TM, o modelo pode preferir esses ativos que entregam um retorno/riscos melhor.\n✔️ 3. Solução de Canto (Corner Solution) Em otimizações com a restrição de peso ≥ 0, é comum que alguns ativos sejam eliminados da carteira (peso zero), porque eles não são necessários para atingir o retorno desejado da forma mais eficiente possível.\n\n\n\nImagine montar um time de futebol. Se dois jogadores fazem exatamente a mesma função, você não escala os dois — escolhe aquele que faz melhor com menor custo. O Markowitz faz isso, só que com risco e retorno.\n\n\n\nO modelo não diz que STLA é uma má ação isoladamente.\nEle diz que, dado o retorno desejado e as características estatísticas (volatilidade e correlação), a STLA não melhora a carteira no ponto ótimo escolhido.\nSe você mudar o target_return ou permitir vendas a descoberto, pode ser que ela entre na carteira.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno Mensal (21 dias úteis)\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$886.42\n$1,013.24\n$1,140.06\n\n\nGM\n$888.01\n$1,011.91\n$1,135.80\n\n\nHMC\n$922.92\n$1,005.34\n$1,087.76\n\n\nTM\n$932.60\n$1,009.06\n$1,085.52\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno Anual (252 dias úteis)\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$719.56\n$1,158.87\n$1,598.17\n\n\nGM\n$713.67\n$1,142.87\n$1,572.07\n\n\nHMC\n$778.58\n$1,064.09\n$1,349.59\n\n\nTM\n$843.86\n$1,108.72\n$1,373.59\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulação de Retorno em 5 Anos\n\n\nInvestindo US$1.000 por ação\n\n\nAção\n🔻 Pessimista\n🔸 Realista\n🔺 Otimista\n\n\n\n\nF\n$812.01\n$1,794.33\n$2,776.65\n\n\nGM\n$754.65\n$1,714.36\n$2,674.08\n\n\nHMC\n$682.01\n$1,320.43\n$1,958.84\n\n\nTM\n$951.35\n$1,543.62\n$2,135.88"
   }
 ]

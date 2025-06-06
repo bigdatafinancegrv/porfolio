@@ -193,7 +193,7 @@ format:
 
 Este projeto tem como objetivo identificar o preço das ações das empresas a baixo assim como, suas altas, baixas, e pontos de atenção ao comprar ou vender tais ações
 
-## **Empresas Analisadas:**
+**Empresas Analisadas:**
 - 🚗 **F** – Ford Motor Company
 - 🏭 **GM** – General Motors Company  
 - 🌏 **TM** – Toyota Motor Corporation
