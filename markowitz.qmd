@@ -221,7 +221,7 @@ library(dplyr)
 library(gt)
 
 # 🔗 Ações da carteira (exceto STLA que tem peso zero)
-tickers <- c("F", "GM", "HMC", "TM")
+tickers <- c("F", "GM", "HMC", "TM","STLA")
 
 # 📅 Dados de preço
 dados <- tq_get(tickers,

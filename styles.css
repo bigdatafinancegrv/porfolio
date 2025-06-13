@@ -719,3 +719,10 @@ p:hover {
     transform: rotate(360deg);
   }
 }
+.bar {
+  fill: green;
+}
+
+.bar:last-of-type {
+  fill: yellow;
+}
