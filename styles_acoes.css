@@ -1,0 +1,762 @@
+/* Variáveis de cores */
+:root {
+  --bg-color: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #7c4dff;
+  --accent-hover: #9670ff;
+  --border-color: #333333;
+  --card-bg: #252525;
+  --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Animações personalizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(124, 77, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(124, 77, 255, 0.6);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Estilos gerais */
+body {
+  background: linear-gradient(45deg, var(--bg-color) 0%, #1a1a2e 50%, var(--bg-color) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: var(--text-primary);
+  font-family: "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Cursor personalizado */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.7;
+  transition: transform 0.1s ease;
+}
+
+/* INÍCIO: Estilos específicos para a barra de navegação do Quarto */
+.navbar {
+  background: rgba(30, 30, 30, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar:hover {
+  box-shadow: 0 12px 40px rgba(124, 77, 255, 0.2) !important;
+}
+
+.navbar-title {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar-title:hover {
+  color: var(--accent-color) !important;
+  text-shadow: 0 0 10px rgba(124, 77, 255, 0.5) !important;
+}
+
+.navbar-nav .nav-link {
+  color: var(--text-secondary) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--accent-color) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* FIM: Estilos específicos para a barra de navegação do Quarto */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  animation: fadeInUp 0.8s ease;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--accent-color), #ff7eb3, #4facfe);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite, typing 2s steps(20) 1s both;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--accent-color);
+  animation: typing 3s steps(20) 1s both, blink 1s step-end infinite;
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid transparent;
+  background: linear-gradient(90deg, var(--accent-color), transparent) bottom/0% 2px no-repeat;
+  padding-bottom: 0.5rem;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+h2:hover {
+  background-size: 100% 2px;
+  transform: translateX(10px);
+}
+
+h2::before {
+  content: '▶';
+  position: absolute;
+  left: -30px;
+  color: var(--accent-color);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+h2:hover::before {
+  opacity: 1;
+  left: -20px;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(124, 77, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+a:hover::before {
+  left: 100%;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-shadow: 0 0 10px rgba(124, 77, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Equipe */
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 2rem 0;
+  perspective: 1000px;
+}
+
+.team-member {
+  background: linear-gradient(145deg, var(--card-bg), #2a2a2a);
+  border-radius: 20px;
+  padding: 2rem;
+  flex: 1 1 300px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease;
+  animation-delay: calc(var(--delay, 0) * 0.2s);
+}
+
+.team-member::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-1);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover::before {
+  transform: scaleX(1);
+}
+
+.team-member:hover {
+  transform: translateY(-15px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(124, 77, 255, 0.3);
+  animation: glow 2s ease infinite;
+}
+
+.team-member:nth-child(1) { --delay: 0; }
+.team-member:nth-child(2) { --delay: 1; }
+.team-member:nth-child(3) { --delay: 2; }
+.team-member:nth-child(4) { --delay: 3; }
+
+.team-member img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid var(--accent-color);
+  margin-bottom: 1rem;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.team-member:hover img {
+  transform: scale(1.1) rotate(5deg);
+  border-color: #ff7eb3;
+  box-shadow: 0 0 30px rgba(124, 77, 255, 0.5);
+}
+
+.team-member h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.team-member:hover h3 {
+  color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+/* Tecnologias */
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.technology {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(145deg, var(--card-bg), #2a2a2a);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 150px;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.technology::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(124, 77, 255, 0.1) 0%, transparent 70%);
+  transition: all 0.5s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.technology:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+.technology:hover {
+  transform: scale(1.1) rotateY(10deg);
+  box-shadow: 0 15px 35px rgba(124, 77, 255, 0.3);
+}
+
+.technology img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.technology:hover img {
+  transform: scale(1.2) rotate(360deg);
+  filter: drop-shadow(0 0 20px rgba(124, 77, 255, 0.5));
+}
+
+/* Tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: linear-gradient(145deg, var(--card-bg), #2a2a2a);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease;
+}
+
+th,
+td {
+  padding: 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(124, 77, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  color: var(--text-primary); /* Garante que o texto padrão das células seja branco */
+}
+
+th {
+  background: linear-gradient(135deg, var(--accent-color), #9670ff);
+  color: white; /* Garante o texto dos cabeçalhos em branco */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+tr {
+  transition: all 0.3s ease;
+}
+
+tr:hover {
+  background: linear-gradient(90deg, rgba(124, 77, 255, 0.1), rgba(124, 77, 255, 0.05));
+  transform: translateX(10px);
+}
+
+/* Removi a regra que alterava a cor do texto no hover para garantir que permaneça branco */
+/* Se quiser que o texto fique acentuado no hover, reative:
+tr:hover td {
+  color: var(--accent-color) !important;
+}
+*/
+
+/* Estilos para as classes do DT adicionadas pelo JavaScript */
+.dataTables_wrapper .dataTable tbody td {
+  color: var(--text-primary); /* Garante o texto das células do DT em branco */
+}
+
+.dataTables_wrapper .dataTable tbody td:first-child {
+  background-color: #2a2a35 !important; /* Cor mais escura para a primeira coluna */
+  color: #f0f0f0 !important; /* Branco puro para a coluna DATE */
+  font-weight: bold;
+  border-left: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dataTables_wrapper .dataTable thead th {
+  color: #ffffff !important; /* Força os cabeçalhos da tabela DT a serem brancos */
+  border-bottom: none;
+}
+
+/* Cores de fundo dos cabeçalhos (baseado no seu JavaScript) */
+.dataTables_wrapper .dataTable thead th.header-date { background-color: #3b3052; }
+.dataTables_wrapper .dataTable thead th.header-f,
+.dataTables_wrapper .dataTable thead th.header-gm,
+.dataTables_wrapper .dataTable thead th.header-hmc,
+.dataTables_wrapper .dataTable thead th.header-stla,
+.dataTables_wrapper .dataTable thead th.header-tm { background-color: #6a0dad; }
+
+/* Cores de fundo das células de dados (baseado no seu JavaScript) */
+.dataTables_wrapper .dataTable tbody td.col-f { background-color: #5d3f82; }
+.dataTables_wrapper .dataTable tbody td.col-gm { background-color: #533975; }
+.dataTables_wrapper .dataTable tbody td.col-hmc { background-color: #4a3369; }
+.dataTables_wrapper .dataTable tbody td.col-stla { background-color: #412d5d; }
+.dataTables_wrapper .dataTable tbody td.col-tm { background-color: #3a2752; }
+
+/* REMOVIDO: Seção "Status badges" que coloria a última coluna em verde/laranja. */
+/* td:last-child {
+   font-weight: 600;
+}
+tr:nth-child(1) td:last-child {
+   color: #4caf50;
+   text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+tr:nth-child(2) td:last-child {
+   color: #ff9800;
+   text-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+}
+tr:nth-child(n+3) td:last-child {
+   color: #757575;
+}
+*/
+
+/* Remover borda do container da tabela DT */
+.dataTables_wrapper .dataTables_scroll {
+  border: none !important;
+}
+
+
+/* Funcionalidades */
+.functionality {
+  background: linear-gradient(145deg, var(--card-bg), #2a2a2a);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid transparent;
+}
+
+.functionality::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-1);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.functionality:hover::before {
+  transform: scaleY(1);
+}
+
+.functionality:hover {
+  transform: translateX(10px);
+  box-shadow: 0 15px 35px rgba(124, 77, 255, 0.2);
+}
+
+.functionality h3 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.functionality:hover h3 {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(124, 77, 255, 0.3);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  position: relative;
+  animation: fadeInUp 0.8s ease;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  transform: translateX(-50%);
+}
+
+/* Scroll animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .team-members {
+    flex-direction: column;
+  }
+
+  .team-member {
+    flex: 1 1 100%;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .technology {
+    width: 120px;
+  }
+}
+
+/* TOC (Table of Contents) */
+#toc-title {
+  color: var(--text-primary);
+}
+
+#TOC {
+  background: linear-gradient(145deg, var(--bg-secondary), #2a2a2a);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(124, 77, 255, 0.1);
+}
+
+#TOC ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+#TOC a {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+#TOC a:hover {
+  color: var(--accent-color);
+  background: rgba(124, 77, 255, 0.1);
+  transform: translateX(10px);
+}
+
+/* Código */
+pre {
+  background: linear-gradient(145deg, var(--bg-secondary), #2a2a2a);
+  border-radius: 10px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  border: 1px solid rgba(124, 77, 255, 0.1);
+  position: relative;
+}
+
+pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-1);
+}
+
+code {
+  font-family: "Fira Code", monospace;
+  font-size: 0.9rem;
+}
+
+/* Remover fundos brancos ao redor dos gráficos */
+.cell-output-display,
+.cell-output,
+.quarto-figure,
+.figure-img,
+.dashboard-page-layout,
+.dashboard-container {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+svg {
+  background-color: transparent !important;
+}
+
+.ggplot,
+.ggplot2 rect {
+  background-color: transparent !important;
+  fill: transparent !important;
+}
+
+div.figure,
+.cell,
+.html-fill-container {
+  background-color: transparent !important;
+}
+
+p {
+  color: var(--text-primary) !important;
+  transition: all 0.3s ease;
+}
+
+p:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Efeitos de partículas */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+/* Loading animation */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(124, 77, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--accent-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

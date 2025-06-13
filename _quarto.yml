@@ -9,7 +9,6 @@ website:
       - href: index.qmd
         text: Introdução
       - href: analise_acoes.qmd
-      - href: teste.qmd
       - href: markowitz.qmd
 
 format:

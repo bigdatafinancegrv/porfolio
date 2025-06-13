@@ -268,10 +268,10 @@ Compare o desempenho das ações ao longo de diferentes períodos, com gráficos
 | Fase | Descrição | Status | Progresso |
 |------|-----------|--------|-----------|
 | 1 | Planejamento e Pesquisa | ✅ Concluído | 100% |
-| 2 | Design e Prototipagem | 🔄 Em andamento | 75% |
-| 3 | Desenvolvimento | ⏳ Pendente | 0% |
-| 4 | Testes | ⏳ Pendente | 0% |
-| 5 | Lançamento | ⏳ Pendente | 0% |
+| 2 | Design e Prototipagem | ✅ Concluído | 100% |
+| 3 | Desenvolvimento | ✅ Concluído | 100% |
+| 4 | Testes | ✅ Concluído | 100% |
+| 5 | Lançamento | ⏳ Pendente | 90% |
 
 ## Estatísticas do Projeto
 
@@ -289,9 +289,10 @@ Para mais informações sobre o projeto, entre em contato conosco:
 📧 **Email:** [bigdatafinance.grv@gmail.com](mailto:bigdatafinance.grv@gmail.com)
 
 📱 **Redes Sociais:**
-- LinkedIn: [Data Finance Team](https://linkedin.com/company/datafinance)
-- Twitter: [@DataFinanceGRV](https://twitter.com/datafinancegrv)
-- GitHub: [DataFinance Project](https://github.com/datafinance)
+
+- **LinkedIn:** [Data Finance Team](https://linkedin.com/company/datafinance)
+- **Twitter:** [@DataFinanceGRV](https://twitter.com/datafinancegrv)
+- **GitHub:** [DataFinance Project](https://github.com/bigdatafinancegrv)
 
 ::: {.footer}
 © 2025 Equipe do Projeto. Todos os direitos reservados.

@@ -98,10 +98,6 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Análise de Ações</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teste.html"> 
-<span class="menu-text">Forecast</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="./markowitz.html" aria-current="page"> 
 <span class="menu-text">Modelo de Markowitz</span></a>
   </li>  
@@ -125,9 +121,9 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#o-que-é" id="toc-o-que-é" class="nav-link" data-scroll-target="#o-que-é">📈 O que é?</a></li>
   <li><a href="#como-funciona-o-modelo" id="toc-como-funciona-o-modelo" class="nav-link" data-scroll-target="#como-funciona-o-modelo">⚙️ Como funciona o modelo?</a></li>
-  <li><a href="#por-que-a-ação-stla-ficou-com-peso-zero" id="toc-por-que-a-ação-stla-ficou-com-peso-zero" class="nav-link" data-scroll-target="#por-que-a-ação-stla-ficou-com-peso-zero">⚠️ Por que a ação STLA ficou com peso zero?</a></li>
-  <li><a href="#analogia-simples" id="toc-analogia-simples" class="nav-link" data-scroll-target="#analogia-simples">📊 Analogia simples:</a></li>
-  <li><a href="#conclusão-prática" id="toc-conclusão-prática" class="nav-link" data-scroll-target="#conclusão-prática">🔥 Conclusão prática:</a></li>
+  <li><a href="#por-que-algumas-ações-ficaram-com-peso-baixo-no-meu-modelo-de-markowitz" id="toc-por-que-algumas-ações-ficaram-com-peso-baixo-no-meu-modelo-de-markowitz" class="nav-link" data-scroll-target="#por-que-algumas-ações-ficaram-com-peso-baixo-no-meu-modelo-de-markowitz">⚠️ Por que algumas ações ficaram com peso baixo no meu modelo de Markowitz?</a></li>
+  <li><a href="#analogia-simples" id="toc-analogia-simples" class="nav-link" data-scroll-target="#analogia-simples">📊 Analogia Simples:</a></li>
+  <li><a href="#conclusão-prática" id="toc-conclusão-prática" class="nav-link" data-scroll-target="#conclusão-prática">🔥 Conclusão Prática:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -173,53 +169,35 @@ ul.task-list li input[type="checkbox"] {
 <p>✅ O retorno da carteira ser igual a um alvo (target_return)</p>
 <p>✅ A soma dos pesos ser igual a 1 (100% do capital investido)</p>
 <p>✅ (Opcional) Pesos ≥ 0 → não permite venda a descoberto (short)</p>
-</section>
-</section>
-<section id="por-que-a-ação-stla-ficou-com-peso-zero" class="level3">
-<h3 class="anchored" data-anchor-id="por-que-a-ação-stla-ficou-com-peso-zero">⚠️ Por que a ação STLA ficou com peso zero?</h3>
-<p>→ Isso acontece quando o algoritmo entende que incluir STLA não ajuda a melhorar o equilíbrio risco-retorno da carteira. As razões típicas são:</p>
-<p>✔️ 1. Retorno ajustado ao risco ruim STLA tem um retorno esperado baixo para o nível de risco que apresenta, quando comparada às outras ações.</p>
-<p>✔️ 2. Alta correlação com outras ações Se a STLA está muito correlacionada, por exemplo, com GM ou TM, o modelo pode preferir esses ativos que entregam um retorno/riscos melhor.</p>
-<p>✔️ 3. Solução de Canto (Corner Solution) Em otimizações com a restrição de peso ≥ 0, é comum que alguns ativos sejam eliminados da carteira (peso zero), porque eles não são necessários para atingir o retorno desejado da forma mais eficiente possível.</p>
-</section>
-<section id="analogia-simples" class="level3">
-<h3 class="anchored" data-anchor-id="analogia-simples">📊 Analogia simples:</h3>
-<p>Imagine montar um time de futebol. Se dois jogadores fazem exatamente a mesma função, você não escala os dois — escolhe aquele que faz melhor com menor custo. O Markowitz faz isso, só que com risco e retorno.</p>
-</section>
-<section id="conclusão-prática" class="level3">
-<h3 class="anchored" data-anchor-id="conclusão-prática">🔥 Conclusão prática:</h3>
-<p>O modelo não diz que STLA é uma má ação isoladamente.</p>
-<p>Ele diz que, dado o retorno desejado e as características estatísticas (volatilidade e correlação), a STLA não melhora a carteira no ponto ótimo escolhido.</p>
-<p>Se você mudar o target_return ou permitir vendas a descoberto, pode ser que ela entre na carteira.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="markowitz_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="markowitz_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ozajbllgts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="avinvlctwr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#ozajbllgts table {
+#avinvlctwr table {
   font-family: 'Roboto Mono', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ozajbllgts thead, #ozajbllgts tbody, #ozajbllgts tfoot, #ozajbllgts tr, #ozajbllgts td, #ozajbllgts th {
+#avinvlctwr thead, #avinvlctwr tbody, #avinvlctwr tfoot, #avinvlctwr tr, #avinvlctwr td, #avinvlctwr th {
   border-style: none;
 }
 
-#ozajbllgts p {
+#avinvlctwr p {
   margin: 0;
   padding: 0;
 }
 
-#ozajbllgts .gt_table {
+#avinvlctwr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -245,12 +223,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_caption {
+#avinvlctwr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ozajbllgts .gt_title {
+#avinvlctwr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -262,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#ozajbllgts .gt_subtitle {
+#avinvlctwr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -274,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#ozajbllgts .gt_heading {
+#avinvlctwr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -286,13 +264,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_bottom_border {
+#avinvlctwr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_col_headings {
+#avinvlctwr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -307,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_col_heading {
+#avinvlctwr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -327,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ozajbllgts .gt_column_spanner_outer {
+#avinvlctwr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -339,15 +317,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#ozajbllgts .gt_column_spanner_outer:first-child {
+#avinvlctwr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ozajbllgts .gt_column_spanner_outer:last-child {
+#avinvlctwr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ozajbllgts .gt_column_spanner {
+#avinvlctwr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -359,11 +337,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#ozajbllgts .gt_spanner_row {
+#avinvlctwr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ozajbllgts .gt_group_heading {
+#avinvlctwr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -389,7 +367,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#ozajbllgts .gt_empty_group_heading {
+#avinvlctwr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -404,15 +382,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#ozajbllgts .gt_from_md > :first-child {
+#avinvlctwr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ozajbllgts .gt_from_md > :last-child {
+#avinvlctwr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ozajbllgts .gt_row {
+#avinvlctwr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -431,7 +409,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ozajbllgts .gt_stub {
+#avinvlctwr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -444,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ozajbllgts .gt_stub_row_group {
+#avinvlctwr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -458,15 +436,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#ozajbllgts .gt_row_group_first td {
+#avinvlctwr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ozajbllgts .gt_row_group_first th {
+#avinvlctwr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ozajbllgts .gt_summary_row {
+#avinvlctwr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -476,16 +454,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ozajbllgts .gt_first_summary_row {
+#avinvlctwr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_first_summary_row.thick {
+#avinvlctwr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ozajbllgts .gt_last_summary_row {
+#avinvlctwr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -495,7 +473,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_grand_summary_row {
+#avinvlctwr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -505,7 +483,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ozajbllgts .gt_first_grand_summary_row {
+#avinvlctwr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -515,7 +493,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_last_grand_summary_row_top {
+#avinvlctwr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -525,11 +503,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_striped {
+#avinvlctwr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ozajbllgts .gt_table_body {
+#avinvlctwr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -538,7 +516,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_footnotes {
+#avinvlctwr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -552,7 +530,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_footnote {
+#avinvlctwr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -561,7 +539,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ozajbllgts .gt_sourcenotes {
+#avinvlctwr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -575,7 +553,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ozajbllgts .gt_sourcenote {
+#avinvlctwr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -583,72 +561,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ozajbllgts .gt_left {
+#avinvlctwr .gt_left {
   text-align: left;
 }
 
-#ozajbllgts .gt_center {
+#avinvlctwr .gt_center {
   text-align: center;
 }
 
-#ozajbllgts .gt_right {
+#avinvlctwr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ozajbllgts .gt_font_normal {
+#avinvlctwr .gt_font_normal {
   font-weight: normal;
 }
 
-#ozajbllgts .gt_font_bold {
+#avinvlctwr .gt_font_bold {
   font-weight: bold;
 }
 
-#ozajbllgts .gt_font_italic {
+#avinvlctwr .gt_font_italic {
   font-style: italic;
 }
 
-#ozajbllgts .gt_super {
+#avinvlctwr .gt_super {
   font-size: 65%;
 }
 
-#ozajbllgts .gt_footnote_marks {
+#avinvlctwr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ozajbllgts .gt_asterisk {
+#avinvlctwr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ozajbllgts .gt_indent_1 {
+#avinvlctwr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ozajbllgts .gt_indent_2 {
+#avinvlctwr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ozajbllgts .gt_indent_3 {
+#avinvlctwr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ozajbllgts .gt_indent_4 {
+#avinvlctwr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ozajbllgts .gt_indent_5 {
+#avinvlctwr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ozajbllgts .katex-display {
+#avinvlctwr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ozajbllgts div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#avinvlctwr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -671,27 +649,27 @@ ul.task-list li input[type="checkbox"] {
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">F</td>
-<td class="gt_row gt_right" headers="pess_mensal" style="background-color: #000000; color: #FFFFFF">$886.42</td>
-<td class="gt_row gt_right" headers="real_mensal" style="background-color: #000000; color: #FFFFFF">$1,013.24</td>
-<td class="gt_row gt_right" headers="otim_mensal" style="background-color: #000000; color: #FFFFFF">$1,140.06</td>
+<td class="gt_row gt_right" headers="pess_mensal" style="background-color: #000000; color: #FFFFFF">$887.19</td>
+<td class="gt_row gt_right" headers="real_mensal" style="background-color: #000000; color: #FFFFFF">$1,013.84</td>
+<td class="gt_row gt_right" headers="otim_mensal" style="background-color: #000000; color: #FFFFFF">$1,140.49</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">GM</td>
-<td class="gt_row gt_right" headers="pess_mensal" style="background-color: #000000; color: #FFFFFF">$888.01</td>
-<td class="gt_row gt_right" headers="real_mensal" style="background-color: #000000; color: #FFFFFF">$1,011.91</td>
-<td class="gt_row gt_right" headers="otim_mensal" style="background-color: #000000; color: #FFFFFF">$1,135.80</td>
+<td class="gt_row gt_right" headers="pess_mensal" style="background-color: #000000; color: #FFFFFF">$888.82</td>
+<td class="gt_row gt_right" headers="real_mensal" style="background-color: #000000; color: #FFFFFF">$1,012.56</td>
+<td class="gt_row gt_right" headers="otim_mensal" style="background-color: #000000; color: #FFFFFF">$1,136.30</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">HMC</td>
-<td class="gt_row gt_right" headers="pess_mensal" style="background-color: #000000; color: #FFFFFF">$922.92</td>
-<td class="gt_row gt_right" headers="real_mensal" style="background-color: #000000; color: #FFFFFF">$1,005.34</td>
-<td class="gt_row gt_right" headers="otim_mensal" style="background-color: #000000; color: #FFFFFF">$1,087.76</td>
+<td class="gt_row gt_right" headers="pess_mensal" style="background-color: #000000; color: #FFFFFF">$923.23</td>
+<td class="gt_row gt_right" headers="real_mensal" style="background-color: #000000; color: #FFFFFF">$1,005.52</td>
+<td class="gt_row gt_right" headers="otim_mensal" style="background-color: #000000; color: #FFFFFF">$1,087.82</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">TM</td>
-<td class="gt_row gt_right" headers="pess_mensal" style="background-color: #000000; color: #FFFFFF">$932.60</td>
-<td class="gt_row gt_right" headers="real_mensal" style="background-color: #000000; color: #FFFFFF">$1,009.06</td>
-<td class="gt_row gt_right" headers="otim_mensal" style="background-color: #000000; color: #FFFFFF">$1,085.52</td>
+<td class="gt_row gt_right" headers="pess_mensal" style="background-color: #000000; color: #FFFFFF">$932.47</td>
+<td class="gt_row gt_right" headers="real_mensal" style="background-color: #000000; color: #FFFFFF">$1,008.83</td>
+<td class="gt_row gt_right" headers="otim_mensal" style="background-color: #000000; color: #FFFFFF">$1,085.18</td>
 </tr>
 </tbody>
 </table>
@@ -699,1004 +677,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="cqhjcyyjdz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#cqhjcyyjdz table {
-  font-family: 'Roboto Mono', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#cqhjcyyjdz thead, #cqhjcyyjdz tbody, #cqhjcyyjdz tfoot, #cqhjcyyjdz tr, #cqhjcyyjdz td, #cqhjcyyjdz th {
-  border-style: none;
-}
-
-#cqhjcyyjdz p {
-  margin: 0;
-  padding: 0;
-}
-
-#cqhjcyyjdz .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#cqhjcyyjdz .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#cqhjcyyjdz .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#cqhjcyyjdz .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#cqhjcyyjdz .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#cqhjcyyjdz .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#cqhjcyyjdz .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#cqhjcyyjdz .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#cqhjcyyjdz .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#cqhjcyyjdz .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#cqhjcyyjdz .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#cqhjcyyjdz .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#cqhjcyyjdz .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#cqhjcyyjdz .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#cqhjcyyjdz .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#cqhjcyyjdz .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#cqhjcyyjdz .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#cqhjcyyjdz .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#cqhjcyyjdz .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#cqhjcyyjdz .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#cqhjcyyjdz .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#cqhjcyyjdz .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#cqhjcyyjdz .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#cqhjcyyjdz .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#cqhjcyyjdz .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#cqhjcyyjdz .gt_left {
-  text-align: left;
-}
-
-#cqhjcyyjdz .gt_center {
-  text-align: center;
-}
-
-#cqhjcyyjdz .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#cqhjcyyjdz .gt_font_normal {
-  font-weight: normal;
-}
-
-#cqhjcyyjdz .gt_font_bold {
-  font-weight: bold;
-}
-
-#cqhjcyyjdz .gt_font_italic {
-  font-style: italic;
-}
-
-#cqhjcyyjdz .gt_super {
-  font-size: 65%;
-}
-
-#cqhjcyyjdz .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#cqhjcyyjdz .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#cqhjcyyjdz .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#cqhjcyyjdz .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#cqhjcyyjdz .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#cqhjcyyjdz .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#cqhjcyyjdz .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#cqhjcyyjdz .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#cqhjcyyjdz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_heading header">
-<th colspan="4" class="gt_heading gt_title gt_font_normal" style="background-color: #000000; color: #FFFFFF; font-weight: bold"><strong>Simulação de Retorno Anual (252 dias úteis)</strong></th>
-</tr>
-<tr class="gt_heading even">
-<th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="background-color: #000000; color: #FFFFFF; font-weight: bold">Investindo US$1.000 por ação</th>
-</tr>
-<tr class="gt_col_headings header">
-<th id="symbol" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #000000; color: #FFFFFF; font-weight: bold" scope="col">Ação</th>
-<th id="pess_anual" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #000000; color: #FFFFFF; font-weight: bold" scope="col">🔻 Pessimista</th>
-<th id="real_anual" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #000000; color: #FFFFFF; font-weight: bold" scope="col">🔸 Realista</th>
-<th id="otim_anual" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #000000; color: #FFFFFF; font-weight: bold" scope="col">🔺 Otimista</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">F</td>
-<td class="gt_row gt_right" headers="pess_anual" style="background-color: #000000; color: #FFFFFF">$719.56</td>
-<td class="gt_row gt_right" headers="real_anual" style="background-color: #000000; color: #FFFFFF">$1,158.87</td>
-<td class="gt_row gt_right" headers="otim_anual" style="background-color: #000000; color: #FFFFFF">$1,598.17</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">GM</td>
-<td class="gt_row gt_right" headers="pess_anual" style="background-color: #000000; color: #FFFFFF">$713.67</td>
-<td class="gt_row gt_right" headers="real_anual" style="background-color: #000000; color: #FFFFFF">$1,142.87</td>
-<td class="gt_row gt_right" headers="otim_anual" style="background-color: #000000; color: #FFFFFF">$1,572.07</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">HMC</td>
-<td class="gt_row gt_right" headers="pess_anual" style="background-color: #000000; color: #FFFFFF">$778.58</td>
-<td class="gt_row gt_right" headers="real_anual" style="background-color: #000000; color: #FFFFFF">$1,064.09</td>
-<td class="gt_row gt_right" headers="otim_anual" style="background-color: #000000; color: #FFFFFF">$1,349.59</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">TM</td>
-<td class="gt_row gt_right" headers="pess_anual" style="background-color: #000000; color: #FFFFFF">$843.86</td>
-<td class="gt_row gt_right" headers="real_anual" style="background-color: #000000; color: #FFFFFF">$1,108.72</td>
-<td class="gt_row gt_right" headers="otim_anual" style="background-color: #000000; color: #FFFFFF">$1,373.59</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="gxlvlzbpgz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#gxlvlzbpgz table {
-  font-family: 'Roboto Mono', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#gxlvlzbpgz thead, #gxlvlzbpgz tbody, #gxlvlzbpgz tfoot, #gxlvlzbpgz tr, #gxlvlzbpgz td, #gxlvlzbpgz th {
-  border-style: none;
-}
-
-#gxlvlzbpgz p {
-  margin: 0;
-  padding: 0;
-}
-
-#gxlvlzbpgz .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#gxlvlzbpgz .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#gxlvlzbpgz .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#gxlvlzbpgz .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#gxlvlzbpgz .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#gxlvlzbpgz .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#gxlvlzbpgz .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#gxlvlzbpgz .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#gxlvlzbpgz .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#gxlvlzbpgz .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#gxlvlzbpgz .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#gxlvlzbpgz .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#gxlvlzbpgz .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#gxlvlzbpgz .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#gxlvlzbpgz .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#gxlvlzbpgz .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#gxlvlzbpgz .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#gxlvlzbpgz .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#gxlvlzbpgz .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#gxlvlzbpgz .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#gxlvlzbpgz .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#gxlvlzbpgz .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#gxlvlzbpgz .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#gxlvlzbpgz .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#gxlvlzbpgz .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#gxlvlzbpgz .gt_left {
-  text-align: left;
-}
-
-#gxlvlzbpgz .gt_center {
-  text-align: center;
-}
-
-#gxlvlzbpgz .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#gxlvlzbpgz .gt_font_normal {
-  font-weight: normal;
-}
-
-#gxlvlzbpgz .gt_font_bold {
-  font-weight: bold;
-}
-
-#gxlvlzbpgz .gt_font_italic {
-  font-style: italic;
-}
-
-#gxlvlzbpgz .gt_super {
-  font-size: 65%;
-}
-
-#gxlvlzbpgz .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#gxlvlzbpgz .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#gxlvlzbpgz .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#gxlvlzbpgz .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#gxlvlzbpgz .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#gxlvlzbpgz .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#gxlvlzbpgz .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#gxlvlzbpgz .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#gxlvlzbpgz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_heading header">
-<th colspan="4" class="gt_heading gt_title gt_font_normal" style="background-color: #000000; color: #FFFFFF; font-weight: bold"><strong>Simulação de Retorno em 5 Anos</strong></th>
-</tr>
-<tr class="gt_heading even">
-<th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="background-color: #000000; color: #FFFFFF; font-weight: bold">Investindo US$1.000 por ação</th>
-</tr>
-<tr class="gt_col_headings header">
-<th id="symbol" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #000000; color: #FFFFFF; font-weight: bold" scope="col">Ação</th>
-<th id="pess_5anos" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #000000; color: #FFFFFF; font-weight: bold" scope="col">🔻 Pessimista</th>
-<th id="real_5anos" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #000000; color: #FFFFFF; font-weight: bold" scope="col">🔸 Realista</th>
-<th id="otim_5anos" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="background-color: #000000; color: #FFFFFF; font-weight: bold" scope="col">🔺 Otimista</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">F</td>
-<td class="gt_row gt_right" headers="pess_5anos" style="background-color: #000000; color: #FFFFFF">$812.01</td>
-<td class="gt_row gt_right" headers="real_5anos" style="background-color: #000000; color: #FFFFFF">$1,794.33</td>
-<td class="gt_row gt_right" headers="otim_5anos" style="background-color: #000000; color: #FFFFFF">$2,776.65</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">GM</td>
-<td class="gt_row gt_right" headers="pess_5anos" style="background-color: #000000; color: #FFFFFF">$754.65</td>
-<td class="gt_row gt_right" headers="real_5anos" style="background-color: #000000; color: #FFFFFF">$1,714.36</td>
-<td class="gt_row gt_right" headers="otim_5anos" style="background-color: #000000; color: #FFFFFF">$2,674.08</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">HMC</td>
-<td class="gt_row gt_right" headers="pess_5anos" style="background-color: #000000; color: #FFFFFF">$682.01</td>
-<td class="gt_row gt_right" headers="real_5anos" style="background-color: #000000; color: #FFFFFF">$1,320.43</td>
-<td class="gt_row gt_right" headers="otim_5anos" style="background-color: #000000; color: #FFFFFF">$1,958.84</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="symbol" style="background-color: #000000; color: #FFFFFF">TM</td>
-<td class="gt_row gt_right" headers="pess_5anos" style="background-color: #000000; color: #FFFFFF">$951.35</td>
-<td class="gt_row gt_right" headers="real_5anos" style="background-color: #000000; color: #FFFFFF">$1,543.62</td>
-<td class="gt_row gt_right" headers="otim_5anos" style="background-color: #000000; color: #FFFFFF">$2,135.88</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
+</section>
+</section>
+<section id="por-que-algumas-ações-ficaram-com-peso-baixo-no-meu-modelo-de-markowitz" class="level3">
+<h3 class="anchored" data-anchor-id="por-que-algumas-ações-ficaram-com-peso-baixo-no-meu-modelo-de-markowitz">⚠️ Por que algumas ações ficaram com peso baixo no meu modelo de Markowitz?</h3>
+<p>No nosso Modelo de Markowitz, o objetivo é encontrar a carteira de investimentos que ofereça o melhor equilíbrio entre risco e retorno. Quando uma ação como a STLA (ou qualquer outra) termina com um peso baixo ou até zero, isso significa que o algoritmo, com base nas características estatísticas dos ativos, entendeu que incluí-la em maior proporção não contribuiria para otimizar o portfólio. As razões comuns para isso são:</p>
+<p>✔️ 1. Retorno Ajustado ao Risco Desfavorável: A ação possui um retorno esperado que, quando comparado ao nível de risco que ela adiciona à carteira, não é considerado eficiente em relação às outras ações disponíveis.</p>
+<p>✔️ 2. Alta Correlação com Outros Ativos: Se a ação tem uma correlação muito forte com outras ações já presentes na carteira (por exemplo, com GM ou TM), o modelo pode preferir os ativos que oferecem uma combinação de retorno e risco mais vantajosa, sem a necessidade de replicar a exposição ao risco.</p>
+<p>✔️ 3. Solução de Canto (Corner Solution): Em otimizações que impõem restrições de peso mínimo (como peso ≥ 0, que impede vendas a descoberto), é comum que alguns ativos sejam completamente removidos da carteira (peso zero). Isso ocorre porque, para atingir o retorno desejado da forma mais eficiente possível, esses ativos não são essenciais ou podem até prejudicar a otimização.</p>
+</section>
+<section id="analogia-simples" class="level3">
+<h3 class="anchored" data-anchor-id="analogia-simples">📊 Analogia Simples:</h3>
+<p>Imagine que estamos montando um time de futebol ideal. Se temos dois jogadores que desempenham a mesma função e um deles entrega um desempenho superior com menor custo (risco), escolheríamos apenas o melhor. O modelo de Markowitz faz exatamente isso, mas com o “desempenho” sendo o retorno e o “custo” sendo o risco da ação.</p>
+</section>
+<section id="conclusão-prática" class="level3">
+<h3 class="anchored" data-anchor-id="conclusão-prática">🔥 Conclusão Prática:</h3>
+<p>É importante ressaltar que o modelo não está dizendo que uma ação com peso baixo é “ruim” isoladamente.</p>
+<p>Ele simplesmente indica que, para o retorno desejado e considerando as características estatísticas (volatilidade e correlação) de todos os ativos, essa ação específica não contribui para melhorar a carteira no ponto ótimo que foi calculado. Se os parâmetros da otimização forem alterados (como o retorno-alvo ou a permissão para vendas a descoberto), a contribuição e o peso dessa ação na carteira podem mudar significativamente.</p>
 
 
 </section>

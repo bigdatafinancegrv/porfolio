@@ -6,12 +6,12 @@ format:
       - cosmo
       - brand
       - dark
-    css: styles.css
+    css: styles_acoes.css
     orientation: rows
     scrolling: true
     navbar: true
+    
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
     echo = FALSE,
@@ -74,131 +74,173 @@ portfolio_prices <- tk_tbl(portfolio_prices, preserve.row.names = TRUE, rename_i
 portfolio_prices$date <- as.Date(portfolio_prices$date)
 ```
 
+
+A análise dos picos em gráficos de retorno acumulado é vital para entender a volatilidade e o histórico de valorização dos ativos. Esses picos indicam momentos de forte alta e ajudam a identificar tendências e o perfil de risco.
+
+Esses dados, especialmente a amplitude e frequência dos picos, são cruciais para o Modelo de Markowitz. Eles permitem estimar retornos e calcular a volatilidade (risco), além de analisar as correlações entre ativos, 
+fundamentos para otimizar a relação risco-retorno na construção de carteiras eficientes.
+
+- **Identificação de Tendências:** Picos sucessivos em patamares mais altos podem indicar uma tendência de alta no longo prazo, enquanto picos em patamares decrescentes podem sinalizar uma tendência de baixa.
+
+- **Avaliação de Risco:** A intensidade e a frequência dos picos (e vales) fornecem insights sobre a volatilidade do ativo. Ativos com picos muito acentuados e quedas igualmente bruscas são geralmente mais voláteis e, portanto, mais arriscados.
+
+- **Comportamento em Diferentes Cenários:** Observar como os ativos se comportam durante períodos de euforia (picos) e correção (vales) pode revelar sua resiliência e sensibilidade a fatores de mercado.
 ```{r}
-#| fig.height: 8
-# Criar um gráfico de linhas com cores vibrantes para fundo escuro
-portfolio_prices %>%
-  pivot_longer(cols = -date, names_to = "ticker", values_to = "price") %>%
-  ggplot(aes(x = date, y = price, color = ticker)) +
-  geom_line(linewidth = 1) +
-  scale_color_manual(values = c(
-    "F" = "#00BCD4",     # Azul ciano
-    "GM" = "#FF4081",    # Rosa
-    "HMC" = "#FFEB3B",   # Amarelo
-    "STLA" = "#4CAF50",  # Verde
-    "TM" = "#9C27B0"     # Roxo
-  )) +
-  labs(
-    title = "Preços das Ações - Últimos 5 Anos",
-    subtitle = paste("Período:", format(min(portfolio_prices$date), "%d/%m/%Y"), 
-                    "a", format(max(portfolio_prices$date), "%d/%m/%Y")),
-    x = "Data",
-    y = "Preço ($)",
-    color = "Empresa"
-  ) +
-  scale_y_continuous(labels = scales::dollar_format()) +
-  theme(legend.position = "bottom")
+
+# Pacotes
+library(quantmod)
+library(dygraphs)
+library(RColorBrewer)
+
+# Tickers
+tickers <- c("F", "GM", "HMC", "STLA", "TM")
+
+# Função de retorno acumulado
+get_ret_xts <- function(ticker) {
+  data <- Ad(getSymbols(ticker, from = "2020-01-01", auto.assign = FALSE))
+  colnames(data) <- "price"
+  data_ret <- data / as.numeric(first(data)) * 100
+  colnames(data_ret) <- ticker
+  return(data_ret)
+}
+
+# Junta todas as séries
+dados_xts <- do.call(merge, lapply(tickers, get_ret_xts))
+
+# Gráfico com estilo escuro
+dygraph(dados_xts, main = "Retorno Acumulado (Base 100)") %>%
+  dyOptions(
+    colors = c("#FF4136", "#0074D9", "#2ECC40", "#FF851B", "#B10DC9"),
+    drawGrid = FALSE,
+    includeZero = FALSE,
+    useDataTimezone = TRUE,
+    axisLineColor = "white",
+    axisLabelColor = "white"
+  ) %>%
+  dyLegend(show = "always", labelsSeparateLines = TRUE, width = 300) %>%
+  dyCSS("dygraph-dark.css") %>%
+  dyRangeSelector() %>%
+  htmlwidgets::onRender("
+    function(el, x) {
+      // Move legend container to top-right corner
+      var legend = el.querySelector('.dygraph-legend');
+      legend.style.position = 'absolute';
+      legend.style.top = '10px';
+      legend.style.right = '200px';
+      legend.style.background = 'rgba(0,0,0,0.5)';
+      legend.style.padding = '5px 10px';
+      legend.style.borderRadius = '5px';
+      legend.style.color = 'white';
+      legend.style.zIndex = 1000;
+    }
+  ")
+
+
 ```
 
-Este gráfico exibe a variação dos preços das ações de cinco montadoras (Ford - F, General Motors - GM, Honda - HMC, Stellantis - STLA e Toyota - TM) ao longo dos últimos 5 anos, no período de 09/04/2020 a 08/04/2025.
 
-A linha roxa (Toyota - TM) destaca-se com os preços mais elevados, ultrapassando os $250 em seu pico. A General Motors (GM), representada pela linha rosa, apresenta oscilações acentuadas e ocupa o segundo lugar em termos de valorização. As demais empresas (HMC, STLA e F) têm preços mais estáveis e inferiores, mantendo-se abaixo dos $50 durante todo o período.
-
-O gráfico permite comparar o desempenho das ações no setor automotivo, evidenciando a volatilidade e tendências específicas de cada empresa.
 
 
 ```{r}
-# Tabela com estilo para fundo escuro
+#| label: real-stock-prices-table
+#| echo: false
+#| message: false
+#| warning: false
+
+library(quantmod) # Para getSymbols
+library(DT)       # Para datatable
+library(dplyr)    # Para manipulação de dados
+library(tidyr)    # Para pivot_wider
+
+# Processar os dados para um formato adequado ao DT
+# Criar uma lista para armazenar os preços de fechamento de cada ticker
+prices_list <- list()
+
+for (ticker in tickers) {
+  # Pega o objeto xts correspondente ao ticker
+  # Usa get() para acessar a variável com o nome do ticker
+  stock_data <- get(ticker)
+  
+  # Extrai apenas os preços de fechamento (Close price), que geralmente é a coluna 4 ou termina com ".Close"
+  # O nome exato da coluna pode variar ligeiramente (ex: 'F.Close', 'GM.Close')
+  close_prices <- Cl(stock_data) # Cl() é uma função de quantmod para extrair o preço de fechamento
+  
+  # Converte para data.frame e adiciona o nome do ticker
+  prices_list[[ticker]] <- data.frame(
+    Date = index(close_prices),
+    Price = as.numeric(coredata(close_prices)),
+    Asset = ticker
+  )
+}
+
+# Combinar todos os data.frames da lista em um único data.frame
+all_prices_df <- bind_rows(prices_list)
+
+# Pivotar para o formato largo: DATE, F, GM, HMC, STLA, TM
+df_table_real <- all_prices_df %>%
+  pivot_wider(
+    names_from = Asset,
+    values_from = Price
+  ) %>%
+  rename(DATE = Date) %>%
+  # Opcional: Filtrar para um número menor de linhas se você quiser simular a imagem
+  # Você pode ajustar as datas ou o head() aqui
+  arrange(desc(DATE)) %>% # Ordena por data mais recente primeiro
+  head(8) %>% # Pega as últimas 8 linhas (para se assemelhar à imagem de exemplo)
+  arrange(DATE) # Ordena de volta para datas mais antigas primeiro, como na sua imagem
+
+
+# Formatar as colunas de preço para moeda
+for (col in tickers) {
+  df_table_real[[col]] <- paste0("$", format(round(df_table_real[[col]], 2), nsmall = 2))
+}
+
+# Criar a tabela interativa com DT
 datatable(
-  tail(portfolio_prices, 10),
-  options = list(
-    pageLength = 10,
-    dom = 'Bfrtip',
-    autoWidth = TRUE
-  ),
+  df_table_real,
   rownames = FALSE,
-  class = 'cell-border stripe',
-  caption = "Últimos 10 dias de negociação"
-) %>%
-  formatStyle(
-    columns = names(portfolio_prices),
-    backgroundColor = "#121212",
-    color = "#FFFFFF"
-  ) %>%
-  formatStyle(
-    columns = tickers,
-    valueColumns = tickers,
-    backgroundColor = styleInterval(
-      quantile(unlist(portfolio_prices[, tickers]), probs = c(0.25, 0.5, 0.75)),
-      c("#3D5AFE", "#651FFF", "#D500F9", "#FF1744")
+  options = list(
+    dom = 't<"bottom"lip>', # Apenas tabela, info, paginate, sem search acima
+    paging = FALSE,         # Desativa a paginação
+    searching = FALSE,      # Desativa a caixa de busca padrão
+    info = FALSE,           # Desativa a informação "Showing X of Y entries"
+    autoWidth = TRUE,
+    columnDefs = list(
+      list(width = '120px', targets = 0), # Largura para a coluna DATE
+      list(className = 'dt-center', targets = 1:(ncol(df_table_real)-1)) # Alinhamento para as colunas de preço
     ),
-    color = "#FFFFFF"
-  ) %>%
-  formatCurrency(columns = tickers, currency = "$")
+    rowCallback = JS(
+      "function(row, data, index) {",
+      "  var value;",
+      "  for (var i = 1; i < data.length; i++) {",
+      "    var cell = $('td:eq(' + i + ')', row);",
+      "    // Adiciona classes para estilização de fundo roxo-degradê (necessita de CSS externo)
+      ",
+      "    if (i === 1) cell.addClass('col-f');",
+      "    else if (i === 2) cell.addClass('col-gm');",
+      "    else if (i === 3) cell.addClass('col-hmc');",
+      "    else if (i === 4) cell.addClass('col-stla');",
+      "    else if (i === 5) cell.addClass('col-tm');",
+      "  }",
+      "}"
+    ),
+    headerCallback = JS(
+      "function(thead, data, start, end, display) {",
+      "  var header = $(thead).find('th');",
+      "  $(header[0]).addClass('header-date');", # Coluna DATE
+      "  $(header[1]).addClass('header-f');",    # Coluna F
+      "  $(header[2]).addClass('header-gm');",   # Coluna GM
+      "  $(header[3]).addClass('header-hmc');",  # Coluna HMC
+      "  $(header[4]).addClass('header-stla');", # Coluna STLA
+      "  $(header[5]).addClass('header-tm');",   # Coluna TM
+      "}"
+    )
+  ),
+  class = 'display compact cell-border'
+)
 ```
 
-```{r}
-#| fig.height: 8
-# Gráfico de retornos diários
-portfolio_returns <- portfolio_prices %>%
-  mutate(across(-date, ~(. / lag(.) - 1) * 100)) %>%
-  na.omit()
 
-portfolio_returns %>%
-  pivot_longer(cols = -date, names_to = "ticker", values_to = "return") %>%
-  ggplot(aes(x = date, y = return, color = ticker)) +
-  geom_line(alpha = 0.7) +
-  scale_color_manual(values = c(
-    "F" = "#00BCD4",
-    "GM" = "#FF4081",
-    "HMC" = "#FFEB3B",
-    "STLA" = "#4CAF50",
-    "TM" = "#9C27B0"
-  )) +
-  labs(
-    title = "Retornos Diários (%)",
-    x = "Data",
-    y = "Retorno (%)",
-    color = "Empresa"
-  ) +
-  theme(legend.position = "bottom")
-```
-
-Este gráfico mostra os retornos diários (%) das ações das empresas Ford (F), General Motors (GM), Honda (HMC), Stellantis (STLA) e Toyota (TM) ao longo dos últimos 5 anos.
-
-Cada linha vertical representa o retorno percentual de uma ação em um determinado dia. Observa-se uma grande dispersão de valores, variando entre cerca de -20% e +15%, o que indica a volatilidade típica do mercado de ações.
-
-Apesar da alta densidade de dados, é possível notar que:
-
-Os retornos oscilam fortemente em torno de 0%, o que é comum em retornos diários.
-
-Não há uma empresa que se destaque visualmente por ter retornos significativamente mais voláteis do que as outras ao longo do tempo.
-
-Em alguns momentos, ocorrem picos de alta ou queda acentuada, provavelmente relacionados a anúncios importantes, divulgação de resultados ou eventos macroeconômicos.
-
-Este gráfico é útil para avaliar o nível de risco (volatilidade) associado a cada uma dessas ações no curto prazo.
-
-```{r}
-#| fig.height: 8
-# Boxplot de retornos para comparação
-portfolio_returns %>%
-  pivot_longer(cols = -date, names_to = "ticker", values_to = "return") %>%
-  ggplot(aes(x = ticker, y = return, fill = ticker)) +
-  geom_boxplot(alpha = 0.8, outlier.color = "white", outlier.size = 1) +
-  scale_fill_manual(values = c(
-    "F" = "#00BCD4",
-    "GM" = "#FF4081",
-    "HMC" = "#FFEB3B",
-    "STLA" = "#4CAF50",
-    "TM" = "#9C27B0"
-  )) +
-  labs(
-    title = "Distribuição dos Retornos Diários",
-    x = "Empresa",
-    y = "Retorno (%)"
-  ) +
-  theme(legend.position = "none")
-```
 
 Este gráfico apresenta a distribuição dos retornos diários (%) das ações das empresas F, GM, HMC, STLA e TM por meio de boxplots, facilitando a comparação da volatilidade e tendência central de cada uma.
 
@@ -220,17 +262,26 @@ Este gráfico complementa bem o gráfico anterior ao fornecer uma visão estatí
 #| fig.height: 6
 #| fig.width: 8
 
+library(quantmod)
+library(tidyverse)
 library(plotly)
-library(magrittr)
+library(lubridate)
 
-# Dados
-df <- data.frame(
-  Empresa = rep(c("F", "GM", "HMC", "STLA", "TM"), each = 50),
-  Retorno = c(rnorm(50, 0.2, 0.05), rnorm(50, 0.15, 0.04),
-              rnorm(50, 0.18, 0.03), rnorm(50, 0.22, 0.06),
-              rnorm(50, 0.19, 0.05))
-)
+# Calcular retornos logarítmicos diários para cada ação
+returns_list <- lapply(tickers, function(ticker) {
+  precios <- Cl(get(ticker))  # Fechamento ajustado
+  retornos <- dailyReturn(precios, type = "log")
+  tibble(
+    Empresa = ticker,
+    Retorno = as.numeric(retornos),
+    Data = index(retornos)
+  )
+})
 
+# Unir todos os dados em um único dataframe
+df <- bind_rows(returns_list)
+
+# Criar boxplot interativo com fundo escuro e letras brancas
 plot_ly(
   data = df,
   x = ~Empresa,
@@ -242,9 +293,13 @@ plot_ly(
   pointpos = -1.8
 ) %>%
   layout(
-    title = "Distribuição Interativa dos Retornos por Empresa",
-    yaxis = list(title = "Retorno (%)"),
-    xaxis = list(title = "Empresa")
+    title = list(text = "", font = list(color = "#FFFFFF")),
+    yaxis = list(title = "", color = "#FFFFFF", tickfont = list(color = "#FFFFFF")),
+    xaxis = list(title = "", color = "#FFFFFF", tickfont = list(color = "#FFFFFF")),
+    plot_bgcolor = "#000000",
+    paper_bgcolor = "#000000",
+    font = list(color = "#FFFFFF")
   )
-```
 
+
+```

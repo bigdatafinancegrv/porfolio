@@ -32,47 +32,24 @@ O objetivo do modelo é: Minimizar a volatilidade (risco) da carteira
 
 
 
-### ⚠️ Por que a ação STLA ficou com peso zero?
-→ Isso acontece quando o algoritmo entende que incluir STLA não ajuda a melhorar o equilíbrio risco-retorno da carteira. As razões típicas são:
-
-✔️ 1. Retorno ajustado ao risco ruim
-STLA tem um retorno esperado baixo para o nível de risco que apresenta, quando comparada às outras ações.
-
-✔️ 2. Alta correlação com outras ações
-Se a STLA está muito correlacionada, por exemplo, com GM ou TM, o modelo pode preferir esses ativos que entregam um retorno/riscos melhor.
-
-✔️ 3. Solução de Canto (Corner Solution)
-Em otimizações com a restrição de peso ≥ 0, é comum que alguns ativos sejam eliminados da carteira (peso zero), porque eles não são necessários para atingir o retorno desejado da forma mais eficiente possível.
-
-### 📊 Analogia simples:
-Imagine montar um time de futebol. Se dois jogadores fazem exatamente a mesma função, você não escala os dois — escolhe aquele que faz melhor com menor custo. O Markowitz faz isso, só que com risco e retorno.
-
-### 🔥 Conclusão prática:
-O modelo não diz que STLA é uma má ação isoladamente.
-
-Ele diz que, dado o retorno desejado e as características estatísticas (volatilidade e correlação), a STLA não melhora a carteira no ponto ótimo escolhido.
-
-Se você mudar o target_return ou permitir vendas a descoberto, pode ser que ela entre na carteira.
-
-
-
 ```{r , include=FALSE}
-# 📦 Pacotes necessários
+```{r , include=FALSE}
+# 📦 Pacotes
 library(tidyquant)
 library(tidyverse)
 library(quadprog)
 library(PerformanceAnalytics)
 
-# 🔗 Definir os tickers das 5 ações
+# 🔗 Tickers
 tickers <- c("F", "GM", "HMC", "STLA", "TM")
 
-# 🔽 Obter dados dos últimos 2 anos
+# ⏳ Pegar dados dos últimos 2 anos
 dados <- tq_get(tickers,
-                 from = Sys.Date() - 365*2,
-                 to = Sys.Date(),
-                 get = "stock.prices")
+                from = Sys.Date() - 365*2,
+                to = Sys.Date(),
+                get = "stock.prices")
 
-# 📈 Calcular os retornos logarítmicos diários
+# 📈 Retornos logarítmicos diários
 retornos <- dados %>%
   group_by(symbol) %>%
   tq_transmute(select = adjusted,
@@ -83,51 +60,44 @@ retornos <- dados %>%
   pivot_wider(names_from = symbol, values_from = retorno) %>%
   drop_na()
 
-# 📊 Matriz de retornos
 matriz_retorno <- as.matrix(retornos[,-1])
-
-# 📏 Matriz de covariância dos retornos
 cov_mat <- cov(matriz_retorno)
-
-# 📈 Retornos médios diários
 mean_returns <- colMeans(matriz_retorno)
-
-# 🔧 Número de ativos
 n_assets <- ncol(matriz_retorno)
 
-# 📐 Definir os inputs para o modelo de Markowitz
+# 🔧 Modelo de Markowitz
 Dmat <- 2 * cov_mat
 dvec <- rep(0, n_assets)
 
-# 🔍 Verificar os retornos mínimo e máximo possíveis
+# 🔢 Restrições: soma dos pesos = 1, retorno = alvo, pesos ≥ 5%
+peso_min <- 0.05
+peso_max <- 1 - (n_assets - 1) * peso_min
 
-## Retorno mínimo (carteira de mínima variância)
-Amat_minvar <- cbind(rep(1, n_assets), diag(1, n_assets))
-bvec_minvar <- c(1, rep(0, n_assets))
-sol_minvar <- solve.QP(Dmat, dvec, Amat_minvar, bvec_minvar, meq = 1)
-retorno_min <- sum(sol_minvar$solution * mean_returns)
+# Calcular retorno mínimo e máximo viável dados os limites
+retorno_min_viavel <- sum(rep(peso_min, n_assets) * mean_returns)
+retorno_max_viavel <- sum(sort(mean_returns, decreasing = TRUE)[1] * peso_max +
+                          sum(sort(mean_returns, decreasing = TRUE)[-1] * peso_min))
 
-## Retorno máximo (100% no ativo de maior retorno esperado)
-retorno_max <- max(mean_returns)
+# 🔍 Definir retorno alvo automaticamente dentro do intervalo
+target_return <- (retorno_min_viavel + retorno_max_viavel) / 2
 
-cat("✅ Retorno mínimo possível:", round(retorno_min, 6), "\n")
-cat("✅ Retorno máximo possível:", round(retorno_max, 6), "\n")
+cat("📉 Retorno mínimo viável (com 5% por ativo):", round(retorno_min_viavel, 6), "\n")
+cat("📈 Retorno máximo viável (com 5% por ativo):", round(retorno_max_viavel, 6), "\n")
+cat("🎯 Retorno alvo definido automaticamente:", round(target_return, 6), "\n")
 
-# 🚩 Defina o retorno alvo dentro desse intervalo
-target_return <- 0.0005  # Ajuste aqui conforme desejado
+# 🚧 Matriz de restrições
+Amat <- cbind(
+  rep(1, n_assets),       # soma dos pesos = 1
+  mean_returns,           # retorno alvo
+  diag(1, n_assets)       # pesos ≥ peso_min
+)
 
-if(target_return < retorno_min | target_return > retorno_max) {
-  stop("❌ O retorno alvo está fora dos limites viáveis. Ajuste o target_return.")
-}
+bvec <- c(1, target_return, rep(peso_min, n_assets))
 
-# 🏗️ Definir as restrições
-Amat <- cbind(rep(1, n_assets), mean_returns, diag(1, n_assets))
-bvec <- c(1, target_return, rep(0, n_assets))
-
-# 🚀 Resolver o problema quadrático
+# ⚠️ Resolver otimização
 sol <- solve.QP(Dmat, dvec, Amat, bvec, meq = 2)
 
-# 🔎 Pesos ótimos
+# 🎯 Pesos ótimos
 pesos_otimos <- sol$solution
 nomes_ativos <- colnames(matriz_retorno)
 
@@ -137,6 +107,7 @@ resultado_pesos <- tibble(
 )
 
 resultado_pesos
+
 
 
 ```
@@ -359,96 +330,19 @@ tabela_mensal
 
 ```
 
-```{r}
+### ⚠️ Por que algumas ações ficaram com peso baixo no meu modelo de Markowitz?
+No nosso Modelo de Markowitz, o objetivo é encontrar a carteira de investimentos que ofereça o melhor equilíbrio entre risco e retorno. Quando uma ação como a STLA (ou qualquer outra) termina com um peso baixo ou até zero, isso significa que o algoritmo, com base nas características estatísticas dos ativos, entendeu que incluí-la em maior proporção não contribuiria para otimizar o portfólio. As razões comuns para isso são:
 
-# TABELA ANUAL
-tabela_anual <- cenarios %>%
-  select(symbol, pess_anual, real_anual, otim_anual) %>%
-  gt() %>%
-  tab_header(
-    title = md("**Simulação de Retorno Anual (252 dias úteis)**"),
-    subtitle = "Investindo US$1.000 por ação"
-  ) %>%
-  fmt_currency(
-    columns = 2:4,
-    currency = "USD"
-  ) %>%
-  cols_label(
-    symbol = "Ação",
-    pess_anual = "🔻 Pessimista",
-    real_anual = "🔸 Realista",
-    otim_anual = "🔺 Otimista"
-  ) %>%
-  tab_style(
-    style = list(
-      cell_fill(color = "black"),
-      cell_text(color = "white")
-    ),
-    locations = cells_body()
-  ) %>%
-  tab_style(
-    style = list(
-      cell_fill(color = "black"),
-      cell_text(color = "white", weight = "bold")
-    ),
-    locations = list(
-      cells_column_labels(everything()),
-      cells_title(groups = "title"),
-      cells_title(groups = "subtitle")
-    )
-  ) %>%
-  opt_table_font(
-    font = list(gt::google_font("Roboto Mono"))
-  )
+✔️ 1. Retorno Ajustado ao Risco Desfavorável: A ação possui um retorno esperado que, quando comparado ao nível de risco que ela adiciona à carteira, não é considerado eficiente em relação às outras ações disponíveis.
 
-tabela_anual
+✔️ 2. Alta Correlação com Outros Ativos: Se a ação tem uma correlação muito forte com outras ações já presentes na carteira (por exemplo, com GM ou TM), o modelo pode preferir os ativos que oferecem uma combinação de retorno e risco mais vantajosa, sem a necessidade de replicar a exposição ao risco.
 
+✔️ 3. Solução de Canto (Corner Solution): Em otimizações que impõem restrições de peso mínimo (como peso ≥ 0, que impede vendas a descoberto), é comum que alguns ativos sejam completamente removidos da carteira (peso zero). Isso ocorre porque, para atingir o retorno desejado da forma mais eficiente possível, esses ativos não são essenciais ou podem até prejudicar a otimização.
 
-```
+### 📊 Analogia Simples:
+Imagine que estamos montando um time de futebol ideal. Se temos dois jogadores que desempenham a mesma função e um deles entrega um desempenho superior com menor custo (risco), escolheríamos apenas o melhor. O modelo de Markowitz faz exatamente isso, mas com o "desempenho" sendo o retorno e o "custo" sendo o risco da ação.
 
-```{r}
+### 🔥 Conclusão Prática:
+É importante ressaltar que o modelo não está dizendo que uma ação com peso baixo é "ruim" isoladamente.
 
-# TABELA 5 ANOS
-tabela_5anos <- cenarios %>%
-  select(symbol, pess_5anos, real_5anos, otim_5anos) %>%
-  gt() %>%
-  tab_header(
-    title = md("**Simulação de Retorno em 5 Anos**"),
-    subtitle = "Investindo US$1.000 por ação"
-  ) %>%
-  fmt_currency(
-    columns = 2:4,
-    currency = "USD"
-  ) %>%
-  cols_label(
-    symbol = "Ação",
-    pess_5anos = "🔻 Pessimista",
-    real_5anos = "🔸 Realista",
-    otim_5anos = "🔺 Otimista"
-  ) %>%
-  tab_style(
-    style = list(
-      cell_fill(color = "black"),
-      cell_text(color = "white")
-    ),
-    locations = cells_body()
-  ) %>%
-  tab_style(
-    style = list(
-      cell_fill(color = "black"),
-      cell_text(color = "white", weight = "bold")
-    ),
-    locations = list(
-      cells_column_labels(everything()),
-      cells_title(groups = "title"),
-      cells_title(groups = "subtitle")
-    )
-  ) %>%
-  opt_table_font(
-    font = list(gt::google_font("Roboto Mono"))
-  )
-
-tabela_5anos
-
-
-```
+Ele simplesmente indica que, para o retorno desejado e considerando as características estatísticas (volatilidade e correlação) de todos os ativos, essa ação específica não contribui para melhorar a carteira no ponto ótimo que foi calculado. Se os parâmetros da otimização forem alterados (como o retorno-alvo ou a permissão para vendas a descoberto), a contribuição e o peso dessa ação na carteira podem mudar significativamente.

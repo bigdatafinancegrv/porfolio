@@ -1,0 +1,15 @@
+.dygraph-title {
+  color: white;
+  font-weight: bold;
+}
+
+.dygraph-axis-label {
+  color: white;
+  font-weight: normal;
+}
+
+.dygraph-legend {
+  background: transparent !important;
+  font-weight: bold;
+  color: white !important;
+}
